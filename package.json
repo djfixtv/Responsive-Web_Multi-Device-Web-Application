@@ -1,4 +1,14 @@
 {
+  "name": "phansite",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "cd build && node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Persona 5 Aficionado Website",
   "dependencies": {
     "express": "^4.21.2",
     "socket.io": "^4.8.1",
