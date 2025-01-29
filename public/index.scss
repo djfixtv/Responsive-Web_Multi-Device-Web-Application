@@ -1,0 +1,345 @@
+// stroke colors
+$sc: black;
+$sc2: white;
+// stroke width
+$sw: 2px;
+$bg-color: #00000080;
+
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #490000;
+    background-image: url("img/bg-new.png");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.page{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    color: #fff;
+    font-family: 'P5T';
+    text-align: center;
+    height: 100%;
+    h1{
+        margin-bottom: 0;
+    }
+    h2{
+        margin-top: 0;
+    }
+}
+
+.log-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'P5T';
+    text-align: center;
+    height: 100%;
+    h1{
+        margin-bottom: 0;
+    }
+    h2{
+        margin-top: 0;
+    }
+}
+
+// Function for generating text-shadow
+@function outline($color, $width) {
+    @return 
+      -$width -$width 0 $color,
+       $width -$width 0 $color,
+      -$width  $width 0 $color,
+       $width  $width 0 $color,
+      -$width  0px 0 $color,
+       $width  0px 0 $color,
+       0px -$width 0 $color,
+       0px  $width 0 $color;
+  }
+  
+.Welcome {
+    h1 {
+      font-size: 3rem;
+      // Using the function to generate the text-shadow
+      text-shadow: outline($sc, $sw);
+    }
+
+    h2 {
+      font-size: 2rem;
+      text-shadow: outline($sc, $sw);
+    }
+}
+
+
+
+#header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    background: url(img/bg-new-blur.png);
+    background-size: cover;
+    border: solid #840000 0.2vw;
+    a {
+        display: inline-block;
+        color: white;
+        text-shadow: outline($sc, 3.25px);
+        font-family: "P5MT-Alt";
+        font-size: 3vw;
+        text-decoration: none;
+        transition: 0.1s ease; 
+    }
+    a:hover {
+        transform:scale(1.1) ; 
+    }
+    #nav-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .nav-btn {
+        margin: 0 1vw;
+    }
+}
+
+@font-face {
+    font-family: "P5T";
+    src: url(fonts/P5Text.ttf);
+}
+@font-face {
+    font-family: "P5MT";
+    src: url(fonts/P5MenuText.ttf);
+}
+
+@font-face {
+    font-family: "P5MT-Alt";
+    src: url(fonts/P5MenuText-Alt.otf) format('opentype');
+}
+
+.Post-Template{
+    width: 60vw;
+    text-align: left;
+    border: solid black;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.438);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "P5T";
+    color: white;
+    text-shadow: outline($sc, $sw);
+    
+    text-decoration: none;
+    .post-title{
+        display: flex;
+        flex-direction: row;
+        img{
+            width: 75px;
+            height: 70px;
+            margin: 0;
+        }
+        h2{
+            font-size: 2.5rem;
+            margin-top: .9rem;
+            margin-left: 0.5rem;
+            margin-bottom: 0;
+        }
+    }
+    
+    .line{
+        background-color: black;
+        width: 100%;
+        height: 2px;
+        margin: 0;
+    }
+    p{
+        font-size: 1.5rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    
+}
+.Post-Page-Template{
+    width: 90%;
+    text-align: left;
+    border: solid black;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.438);
+    text-shadow: outline($sc, $sw);
+    p{
+        color: #c4c4c4;
+        text-shadow: outline($sc, 0px);
+    }
+    
+    .userinfo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img{
+            width: 55px;
+            height: 50px;
+            margin: 0;
+        }
+        h2{
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            margin-left: 0.5rem;
+            color: white;
+            text-shadow: outline($sc, $sw) !important;
+        }
+    }
+    .post-title{
+        display: flex;
+        flex-direction: column;
+        h2{
+            font-size: 2.5rem;
+            margin-left: 0.5rem;
+            margin-bottom: 0;
+        }
+    }
+    
+    .line{
+        background-color: black;
+        width: 100%;
+        height: 2px;
+        margin: 0;
+    }
+    p{
+        font-size: 1.5rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}
+
+#comment-input{
+    width: 100%;
+    textarea{
+        width: 99%;
+        size: 2;
+        height: 100px;
+    }
+}
+
+.Comment-Template{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.438);
+    border-left:solid black;
+    border-right:solid black;
+    border-bottom:solid black;
+    text-shadow: outline($sc, $sw);
+    .comment{
+        // display: flex;
+        // flex-direction: column;
+        width: 70vw;
+        text-align: left;
+        p{
+            color: #c4c4c4;
+            text-shadow: outline($sc, 0px);
+        }
+        .userinfo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            h2{
+                font-size: 1.5rem;
+                margin-top: 0.5rem;
+                margin-left: 0.5rem;
+                margin-bottom: 0;
+            }
+            img{
+                width: 55px;
+                height: 50px;
+                margin: 0;
+            }
+        }
+        p{
+            font-size: 1.25rem;
+            margin: 0.2rem;
+        }
+    }
+}
+
+.login-outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: visible;
+    margin-bottom: 10rem;
+    
+    img{
+        position: absolute;
+        border: solid black 1px;
+        // border-radius: 2rem;
+        width:100%;
+        max-width: 45rem;
+        height: 25rem;
+        z-index: 0;
+        filter: blur(3px);
+    }
+    .login-page{
+        width:100%;
+        max-width: 45rem;
+        height: 25rem;
+        background: rgb(165, 0, 0);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: solid black 4px;
+        border-radius: 2rem;
+        overflow: hidden;
+        position: relative;
+        // background-image: url("img/StarBG.png");
+        background-color: rgba(0, 0, 0, 0.438);
+        label{
+            display:inline-block;
+            font-size: 3rem;
+            width: 11rem;
+            text-shadow: outline($sc, 3px);
+        }
+        input{
+            font-size: 2rem;
+            font-family: "P5T";
+        }
+        h1{
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 4rem;
+            text-shadow: outline($sc, 3px);
+        }
+        #login{
+            margin-top: 2rem;
+            background: none;
+            border: none;
+            font-family: "P5MT";
+            color: white;
+            font-size: 5rem;
+            cursor:pointer;
+            text-shadow: outline($sc, 3.25px)
+        }
+        #login:hover{
+            transform:scale(1.1);
+        }
+        .login-inner{
+            z-index: 1;
+        }
+    }
+    
+}
+
