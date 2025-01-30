@@ -3,12 +3,19 @@ import http from "http";
 import path from "path";
 import * as sio from "socket.io";
 import * as dotenv from "dotenv";
+import * as dbManager from "./dbManager";
+
 dotenv.config({ path: path.join(__dirname,`../.env`) });
+dbManager.initialize();
+const cookieParser = require("cookie-parser");
+
 
 const app = express();
 const server = http.createServer(app);
+
 const ios = new sio.Server(server);
 
+app.use(cookieParser());
 app.all("*", (req, res, next) => {
     if(req.socket.remoteAddress == null) { return; }
     console.log(`${req.method.toUpperCase()} Request by ${req.socket.remoteAddress.replace("::ffff:","")} for ${req.url}`);
