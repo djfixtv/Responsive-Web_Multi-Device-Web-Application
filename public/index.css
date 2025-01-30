@@ -194,12 +194,55 @@ html, body {
 }
 
 #comment-input {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
 }
 #comment-input textarea {
-  width: 99%;
+  width: 99.1%;
   size: 2;
   height: 100px;
+  background-color: #640000;
+  color: #c4c4c4;
+  font-family: "P5T";
+  font-size: 1.25rem;
+  border: solid black;
+  margin-bottom: 0;
+  padding: 0.5rem;
+}
+#comment-input textarea:focus {
+  outline: none;
+}
+#comment-input .input-inner {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  width: 100%;
+  align-items: center;
+}
+#comment-input .input-inner input {
+  font-family: "P5T";
+  font-size: 1.25rem;
+  color: white;
+  text-shadow: -2px 0 black, 0px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, -1px 0 black, 0px 1px 0 black;
+  background-color: #860000;
+  border: solid black;
+  width: 10rem;
+  height: 2.5rem;
+}
+#comment-input .input-inner input:hover {
+  background-color: #ac0000;
+}
+#comment-input .input-inner input:active {
+  background-color: #860000;
+  color: #c9c9c9;
+}
+#comment-input .input-inner label {
+  width: 100%;
+  text-align: left;
+  font-size: 1.25rem;
 }
 
 .Comment-Template {
@@ -257,14 +300,14 @@ html, body {
   border: solid black 1px;
   width: 100%;
   max-width: 45rem;
-  height: 25rem;
+  height: 30rem;
   z-index: 0;
   filter: blur(3px);
 }
 .login-outer .login-page {
   width: 100%;
   max-width: 45rem;
-  height: 25rem;
+  height: 30rem;
   background: rgb(165, 0, 0);
   display: flex;
   flex-direction: column;
@@ -307,4 +350,100 @@ html, body {
 }
 .login-outer .login-page .login-inner {
   z-index: 1;
+}
+
+.register-outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: visible;
+  margin-bottom: 10rem;
+}
+.register-outer img {
+  position: absolute;
+  border: solid black 1px;
+  width: 100%;
+  max-width: 45rem;
+  height: 25rem;
+  z-index: 0;
+  filter: blur(3px);
+  height: 30rem;
+}
+.register-outer .register-page {
+  width: 100%;
+  max-width: 45rem;
+  height: 30rem;
+  background: rgb(165, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid black 4px;
+  border-radius: 2rem;
+  overflow: hidden;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.438);
+}
+.register-outer .register-page label {
+  display: inline-block;
+  font-size: 3rem;
+  width: 11rem;
+  text-shadow: -6px 0 black, 0px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, -3px 0 black, 0px 3px 0 black;
+}
+.register-outer .register-page input {
+  font-size: 2rem;
+  font-family: "P5T";
+}
+.register-outer .register-page h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 4rem;
+  text-shadow: -6px 0 black, 0px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, -3px 0 black, 0px 3px 0 black;
+}
+.register-outer .register-page #login {
+  margin-top: 2rem;
+  background: none;
+  border: none;
+  font-family: "P5MT";
+  color: white;
+  font-size: 5rem;
+  cursor: pointer;
+  text-shadow: -6.5px 0 black, 0px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, -3.25px 0 black, 0px 3.25px 0 black;
+}
+.register-outer .register-page #login:hover {
+  transform: scale(1.1);
+}
+.register-outer .register-page .register-inner {
+  z-index: 1;
+}
+.register-outer .register-page .genderdiv {
+  display: flex;
+  flex-direction: row;
+}
+.register-outer .register-page .genderdiv label {
+  margin-left: 0.4rem;
+}
+.register-outer .register-page .genderlabel {
+  text-align: left;
+  width: 5rem;
+}
+.register-outer .register-page .gender-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: left;
+}
+.register-outer .register-page .choice-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.register-outer .register-page .choice-container input {
+  margin-bottom: 0.9rem;
+  margin-right: 1rem;
 }/*# sourceMappingURL=index.css.map */

@@ -223,12 +223,57 @@ html, body{
 }
 
 #comment-input{
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
     textarea{
-        width: 99%;
+        width: 99.1%;
         size: 2;
         height: 100px;
+        background-color: #640000;
+        color: #c4c4c4;
+        font-family: "P5T";
+        font-size: 1.25rem;
+        border: solid black;
+        margin-bottom: 0;
+        padding: 0.5rem;
     }
+    textarea:focus{
+        outline:none
+    }
+    .input-inner{
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+        width: 100%;
+        align-items: center;
+        input{
+            font-family: "P5T";
+            font-size: 1.25rem;
+            color: white;
+            text-shadow: outline($sc, 1px);
+            background-color: #860000;
+            border: solid black;
+            width: 10rem;
+            height: 2.5rem;
+        }
+        input:hover{
+            background-color: #ac0000;
+        }
+        input:active{
+            background-color: #860000;
+            color: #c9c9c9;
+        }
+        label{
+            width: 100%;
+            text-align: left;
+            font-size: 1.25rem;
+            
+        }
+    }
+    
 }
 
 .Comment-Template{
@@ -288,14 +333,14 @@ html, body{
         // border-radius: 2rem;
         width:100%;
         max-width: 45rem;
-        height: 25rem;
+        height: 30rem;
         z-index: 0;
         filter: blur(3px);
     }
     .login-page{
         width:100%;
         max-width: 45rem;
-        height: 25rem;
+        height: 30rem;
         background: rgb(165, 0, 0);
         display: flex;
         flex-direction: column;
@@ -338,6 +383,107 @@ html, body{
         }
         .login-inner{
             z-index: 1;
+        }
+    }
+    
+}
+.register-outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: visible;
+    margin-bottom: 10rem;
+    
+    img{
+        position: absolute;
+        border: solid black 1px;
+        // border-radius: 2rem;
+        width:100%;
+        max-width: 45rem;
+        height: 25rem;
+        z-index: 0;
+        filter: blur(3px);
+        height: 30rem;
+    }
+    .register-page{
+        width:100%;
+        max-width: 45rem;
+        height: 30rem;
+        background: rgb(165, 0, 0);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: solid black 4px;
+        border-radius: 2rem;
+        overflow: hidden;
+        position: relative;
+        // background-image: url("img/StarBG.png");
+        background-color: rgba(0, 0, 0, 0.438);
+        label{
+            display:inline-block;
+            font-size: 3rem;
+            width: 11rem;
+            text-shadow: outline($sc, 3px);
+        }
+        input{
+            font-size: 2rem;
+            font-family: "P5T";
+        }
+        h1{
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 4rem;
+            text-shadow: outline($sc, 3px);
+        }
+        #login{
+            margin-top: 2rem;
+            background: none;
+            border: none;
+            font-family: "P5MT";
+            color: white;
+            font-size: 5rem;
+            cursor:pointer;
+            text-shadow: outline($sc, 3.25px);
+            // margin-bottom: 2rem;
+        }
+        #login:hover{
+            transform:scale(1.1);
+        }
+        .register-inner{
+            z-index: 1;
+        }
+        .genderdiv{
+            display: flex;
+            flex-direction: row;
+            label{
+                margin-left: 0.4rem;
+            }
+        }
+        .genderlabel{
+            text-align: left;
+            width: 5rem
+        }
+        .gender-choice{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: left;
+        }
+        .choice-container{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            input{
+                margin-bottom: 0.9rem;
+                margin-right: 1rem;
+            }
+
         }
     }
     

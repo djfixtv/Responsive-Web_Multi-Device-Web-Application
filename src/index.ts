@@ -2,6 +2,8 @@ import express from "express";
 import http from "http";
 import path from "path";
 import * as sio from "socket.io";
+import * as dotenv from "dotenv";
+dotenv.config({ path: path.join(__dirname,`../.env`) });
 
 const app = express();
 const server = http.createServer(app);

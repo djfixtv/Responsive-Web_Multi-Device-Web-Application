@@ -40,6 +40,8 @@ const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
 const path_1 = __importDefault(require("path"));
 const sio = __importStar(require("socket.io"));
+const dotenv = __importStar(require("dotenv"));
+dotenv.config({ path: path_1.default.join(__dirname, `../.env`) });
 const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 const ios = new sio.Server(server);
