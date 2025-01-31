@@ -139,7 +139,7 @@ const getUser_ID = (userId) => {
 };
 exports.getUser_ID = getUser_ID;
 // Creating and retreiving posts
-const createPost = (userID, content) => {
+const createPost = (userID, content, title) => {
     return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
         let user;
         try {
@@ -150,7 +150,7 @@ const createPost = (userID, content) => {
             return;
         }
         let postId = "phan_p_" + crypto.randomUUID();
-        connectionPool.query(`INSERT INTO posts (PostID, OwnerID, Content) VALUES (${mysql.escape(postId)}, ${mysql.escape(userID)}, ${mysql.escape(content)})`, (err, result, fields) => __awaiter(void 0, void 0, void 0, function* () {
+        connectionPool.query(`INSERT INTO posts (PostID, OwnerID, Content, PostTitle) VALUES (${mysql.escape(postId)}, ${mysql.escape(userID)}, ${mysql.escape(content)}, ${mysql.escape(title)})`, (err, result, fields) => __awaiter(void 0, void 0, void 0, function* () {
             if (err) {
                 console.log(`SQL Error!`, err);
                 reject({ message: "SQL Error", err });
@@ -161,7 +161,8 @@ const createPost = (userID, content) => {
                 ID: result.insertId,
                 Content: content,
                 OwnerID: userID,
-                PostID: postId
+                PostID: postId,
+                PostTitle: title
             };
             resolve(newPost);
             return;
@@ -192,7 +193,6 @@ const getPost = (postID) => {
 exports.getPost = getPost;
 const getAllPosts = () => {
     return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log("Getting all posts from database");
         connectionPool.query(`SELECT * FROM posts`, (err, rows, fields) => __awaiter(void 0, void 0, void 0, function* () {
             if (err) {
                 console.log(`SQL Error!`, err);
@@ -202,8 +202,14 @@ const getAllPosts = () => {
             let fullPosts = yield Promise.all(rows.map(post => {
                 return new Promise((resolve) => __awaiter(void 0, void 0, void 0, function* () {
                     let cachedUserData = userCache.get(post.OwnerID);
-                    if (cachedUserData == undefined)
-                        cachedUserData = yield (0, exports.getUser_ID)(post.OwnerID);
+                    try {
+                        if (cachedUserData == undefined)
+                            cachedUserData = yield (0, exports.getUser_ID)(post.OwnerID);
+                    }
+                    catch (e) {
+                        console.log("fail");
+                        cachedUserData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" };
+                    }
                     let fullPost = Object.assign(Object.assign({}, post), { OwnerName: cachedUserData.Username, OwnerPFP: cachedUserData.ProfilePIC });
                     resolve(fullPost);
                 }));

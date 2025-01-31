@@ -33,6 +33,89 @@ html, body{
     }
 }
 
+.forumpage{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    color: #fff;
+    font-family: 'P5T';
+    text-align: center;
+    height: 100%;
+    h1{
+        margin-bottom: 0;
+    }
+    h2{
+        margin-top: 0;
+    }
+    #posts-container{
+        display: flex;
+        flex-direction: column;
+        .Post-Template{
+            width: 60vw;
+            text-align: left;
+            border: solid black;
+            backdrop-filter: blur(3px);
+            background-color: rgba(0, 0, 0, 0.438);
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: "P5T";
+            color: white;
+            text-shadow: outline($sc, $sw);
+            
+            text-decoration: none;
+            .userinfo{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                img{
+                    width: 60px;
+                    height: 55px;
+                    margin: 0;
+                }
+                h2{
+                    font-size: 1.75rem;
+                    margin-top: 1rem;
+                    margin-bottom: 0.5rem;
+                    margin-left: 0.5rem;
+                    color: white;
+                    text-shadow: outline($sc, 2px);
+                }
+            }
+            .post-title{
+                display: flex;
+                flex-direction: column;
+                img{
+                    width: 75px;
+                    height: 70px;
+                    margin: 0;
+                }
+                h2{
+                    font-size: 2.5rem;
+                    margin-left: 0.5rem;
+                    margin-bottom: 0;
+                }
+            }
+            
+            .line{
+                background-color: black;
+                width: 100%;
+                height: 2px;
+                margin: 0;
+            }
+            p{
+                font-size: 1.5rem;
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+                color: #c4c4c4;
+            }
+        }
+    }
+    
+}
+
 .log-page{
     display: flex;
     flex-direction: column;
@@ -68,6 +151,8 @@ html, body{
     backdrop-filter: blur(3px);
     border-radius: 1rem;
     margin-top: 1.5rem;
+    min-width: 90%;
+    min-height: 85%;
     h1 {
       font-size: 3rem;
       // Using the function to generate the text-shadow
@@ -202,6 +287,12 @@ html, body{
             color: white;
             font-size:  3.6rem;
             text-shadow: outline($sc, 3.25px);
+            position: absolute;
+            right: 1rem;
+            transition: 0.05s ease;
+        }
+        input:hover{
+            transform: scale(1.05);
         }
     }
 
@@ -221,50 +312,7 @@ html, body{
     src: url(fonts/P5MenuText-Alt.otf) format('opentype');
 }
 
-.Post-Template{
-    width: 60vw;
-    text-align: left;
-    border: solid black;
-    backdrop-filter: blur(3px);
-    background-color: rgba(0, 0, 0, 0.438);
-    background-size: cover;
-    background-attachment: fixed;
-    font-family: "P5T";
-    color: white;
-    text-shadow: outline($sc, $sw);
-    
-    text-decoration: none;
-    .post-title{
-        display: flex;
-        flex-direction: row;
-        img{
-            width: 75px;
-            height: 70px;
-            margin: 0;
-        }
-        h2{
-            font-size: 2.5rem;
-            margin-top: .9rem;
-            margin-left: 0.5rem;
-            margin-bottom: 0;
-        }
-    }
-    
-    .line{
-        background-color: black;
-        width: 100%;
-        height: 2px;
-        margin: 0;
-    }
-    p{
-        font-size: 1.5rem;
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-        color: #c4c4c4;
-    }
-}
+
 .input-outer{
     backdrop-filter: blur(3px);
     width: 90vw;
@@ -524,14 +572,14 @@ html, body{
         // border-radius: 2rem;
         width:100%;
         max-width: 45rem;
-        height: 30rem;
+        height: 32.5rem;
         z-index: 0;
         filter: blur(3px);
     }
     .login-page{
         width:100%;
         max-width: 45rem;
-        height: 30rem;
+        height: 32.5rem;
         background: rgb(165, 0, 0);
         display: flex;
         flex-direction: column;
@@ -584,7 +632,7 @@ html, body{
         z-index: 10;
         width: 100%;
         max-width: 45rem;
-        height: 30rem;
+        height: 32.5rem;
         overflow: hidden;
         border: solid black 4px;
         border-radius: 2rem;
@@ -597,7 +645,7 @@ html, body{
             height: 25rem;
             z-index: 9;
             filter: blur(3px);
-            height: 30rem;
+            height: 32.5rem;
         }
         h1{
             z-index: 11;
@@ -623,52 +671,72 @@ html, body{
 }
 
 .logout{
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    position: absolute;
+    position: fixed;
     z-index: 10;
     width: 100%;
-    max-width: 45rem;
-    height: 30rem;
-    overflow: hidden;
-    border: solid black 4px;
-    border-radius: 2rem;
-    margin-top: 7rem;
-    img{
-        position: absolute;
-        border: solid black 1px;
-        // border-radius: 2rem;
-        width:100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    #pop-inner{
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        width: 100%;
         max-width: 45rem;
-        height: 25rem;
-        z-index: 9;
-        filter: blur(3px);
         height: 30rem;
-    }
-    h1{
-        z-index: 11;
-        margin-bottom: 1rem;
-        text-shadow: outline($sc, $sw);
-        font-size: 3rem;
-    }
-    .logout-confirm{
-        z-index: 11;
-        button{
-            width: 11rem;
-            height: 6rem;
-            font-family: "P5MT";
-            font-size: 5rem;
-            background: none;
-            border: none;
+        overflow: hidden;
+        border: solid black 4px;
+        border-radius: 2rem;
+        margin-top: 10rem;
+        display: flex;
+        flex-direction: column;
+        img{
+            position: absolute;
+            border: solid black 1px;
+            // border-radius: 2rem;
+            width:100%;
+            max-width: 45.1rem;
+            height: 25.1rem;
+            z-index: 9;
+            filter: blur(3px);
+            height: 30rem;
+            border-radius: 2rem;
+        }
+        h1{
+            z-index: 11;
+            margin-bottom: 1rem;
+            text-shadow: outline($sc, $sw);
+            font-size: 3rem;
             color: white;
-            text-shadow: outline($sc, 3.25px);
-            transition: 0.05s ease; 
-            margin: 1rem;
+            font-family: "P5T";
         }
-        button:hover{
-            transform: scale(1.1);
+        .logout-confirm{
+            z-index: 11;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            button{
+                width: 11rem;
+                height: 6rem;
+                font-family: "P5MT";
+                font-size: 5rem;
+                background: none;
+                border: none;
+                color: white;
+                text-shadow: outline($sc, 3.25px);
+                transition: 0.05s ease; 
+                margin: 1rem;
+            }
+            button:hover{
+                transform: scale(1.1);
+            }
         }
     }
+    
     
 }
 
@@ -685,7 +753,7 @@ html, body{
     .register-page{
         width:100%;
         max-width: 45rem;
-        height: 30rem;
+        height: 32.5rem;
         background: rgb(165, 0, 0);
         display: flex;
         flex-direction: column;
@@ -767,10 +835,9 @@ html, body{
             // border-radius: 2rem;
             width:100%;
             max-width: 45rem;
-            height: 25rem;
             z-index: 0;
             filter: blur(3px);
-            height: 30rem;
+            height: 32.5rem;
         }
     }
     .error{
@@ -818,5 +885,28 @@ html, body{
     }
 }
 
+#post-template{
+    display: none;
+}
 
+.reg-log-redirect{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    p{
+        font-size: 1.2rem;
+        text-shadow: outline($sc, $sw);
+    }
+    a{
+        font-family: "P5MT";
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        text-shadow: outline($sc, $sw);
+    }
+    a:hover{
+        transform: scale(1.1);
+    }
+}
 

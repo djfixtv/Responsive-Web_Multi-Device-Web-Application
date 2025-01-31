@@ -12,11 +12,11 @@
         <div id="nav-wrapper">
             <a class="nav-btn" href="/home">HoMe</a>            
             <a class="nav-btn" href="/forum">PoST</a>
-            <a class="nav-btn" href="">FAQ</a>
+            <a class="nav-btn" href="/faq">FAQ</a>
             <input type="button" id="logoutbutton" value="LogOut" style="display: none;">
         </div>
     </div>
-    <div class="page" id="page">
+    <div class="forumpage" id="page">
         <div class="Welcome2">
             <h1>
                 Forums
@@ -28,17 +28,22 @@
                 <a class="nav-btn" href="/createpost">Create Post</a>
             </div>
         </div>
-        
-        <a class="Post-Template" id="post-template" href="/post">
-            <div class="post-title">
-                <img src="img/pfps/male/JokerIM.png">
-                <h2>Post Title</h2>
-            </div>
+        <div id="posts-container">
+            <a class="Post-Template" id="post-template" href="/post">
+                <div class="userinfo">
+                    <img src="img/pfps/male/JokerIM.png">
+                    <h2>Username</h2>
+                </div>
+                <div class="post-title">
+                    <h2>Post Title</h2>
+                </div>
             <div class="line"></div>
             <p>Post Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </a>
-
-        <div class="logout" id="logoutpopup" style="display: none; flex-direction: column;">
+        </div>
+    </div>
+    <div class="logout" id="logoutpopup" style="display: none; flex-direction: column-reverse;">
+        <div id="pop-inner">
             <h1>Are you sure you want to <br>log out?</h1>
             <div class="logout-confirm">
                 <button id="logoutyes">Yes</button>
@@ -49,6 +54,7 @@
     </div>
     <script src="scripts/socket.io.js"></script>
     <script src="scripts/index.js"></script>
+    <script src="scripts/forum.js"></script>
     <script src="scripts/hover-noise.js"></script>
 </body>
 </html>
