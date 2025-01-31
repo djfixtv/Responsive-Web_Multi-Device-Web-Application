@@ -13,7 +13,7 @@
             <a class="nav-btn" href="/home">HoMe</a>            
             <a class="nav-btn" href="/forum">PoST</a>
             <a class="nav-btn" href="">FAQ</a>
-            <!-- <a class="nav-btn" href="">S</a> -->
+            <input type="button" id="logoutbutton" value="LogOut" style="display: none;">
         </div>
     </div>
     <div class="page">
@@ -42,6 +42,15 @@
                 <a class="nav-btn" href="/login" style="margin-bottom: 2rem;">Log In!</a>
             </div>
             
+        </div>
+
+        <div class="logout" id="logoutpopup" style="display: none; flex-direction: column;">
+            <h1>Are you sure you want to <br>log out?</h1>
+            <div class="logout-confirm">
+                <button id="logoutyes">Yes</button>
+                <button id="logoutno">No</button>
+            </div>
+            <img src="img/StarBG.png">
         </div>
 
     

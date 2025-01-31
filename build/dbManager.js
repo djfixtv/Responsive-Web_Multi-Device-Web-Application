@@ -75,7 +75,7 @@ const createUser = (username, password, gender, profilePic) => {
             UserID: "phan_u_" + crypto.randomUUID(),
             Username: username,
             Password: passHash,
-            ProfilePic: profilePic,
+            ProfilePIC: profilePic,
             Gender: gender
         };
         try {
@@ -84,9 +84,9 @@ const createUser = (username, password, gender, profilePic) => {
             return;
         }
         catch (e) { }
-        connectionPool.query(`INSERT INTO users (UserID, Username, Password, ProfilePic, Gender) VALUES (` +
+        connectionPool.query(`INSERT INTO users (UserID, Username, Password, ProfilePIC, Gender) VALUES (` +
             `${mysql.escape(newUserData.UserID)}, ${mysql.escape(newUserData.Username)}, ${mysql.escape(newUserData.Password)},` +
-            ` ${mysql.escape(newUserData.ProfilePic)}, ${mysql.escape(newUserData.Gender)})`, (err, result, fields) => {
+            ` ${mysql.escape(newUserData.ProfilePIC)}, ${mysql.escape(newUserData.Gender)})`, (err, result, fields) => {
             if (err) {
                 reject(err);
                 return;
@@ -183,7 +183,7 @@ const getPost = (postID) => {
             }
             let postData = rows[0];
             let ownerData = yield (0, exports.getUser_ID)(postData.OwnerID);
-            let fullPostData = Object.assign(Object.assign({}, postData), { OwnerName: ownerData.Username, OwnerPFP: ownerData.ProfilePic });
+            let fullPostData = Object.assign(Object.assign({}, postData), { OwnerName: ownerData.Username, OwnerPFP: ownerData.ProfilePIC });
             resolve(fullPostData);
             return;
         }));
@@ -192,6 +192,7 @@ const getPost = (postID) => {
 exports.getPost = getPost;
 const getAllPosts = () => {
     return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log("Getting all posts from database");
         connectionPool.query(`SELECT * FROM posts`, (err, rows, fields) => __awaiter(void 0, void 0, void 0, function* () {
             if (err) {
                 console.log(`SQL Error!`, err);
@@ -203,7 +204,7 @@ const getAllPosts = () => {
                     let cachedUserData = userCache.get(post.OwnerID);
                     if (cachedUserData == undefined)
                         cachedUserData = yield (0, exports.getUser_ID)(post.OwnerID);
-                    let fullPost = Object.assign(Object.assign({}, post), { OwnerName: cachedUserData.Username, OwnerPFP: cachedUserData.ProfilePic });
+                    let fullPost = Object.assign(Object.assign({}, post), { OwnerName: cachedUserData.Username, OwnerPFP: cachedUserData.ProfilePIC });
                     resolve(fullPost);
                 }));
             }));

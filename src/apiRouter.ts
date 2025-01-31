@@ -104,26 +104,26 @@ Router.post("/register", async (req, res) => {
     res.end();
 });
 
-Router.post("*", (req, res, next) => {
-    let sessionId = req.cookies["phan_sessionId"]
+// Router.post("*", (req, res, next) => {
+//     let sessionId = req.cookies["phan_sessionId"]
     
-    if(!sessionId) {
-        res.send({ success: false, message: `Not logged in` });
-        res.end();
-        return;
-    }
+//     if(!sessionId) {
+//         res.send({ success: false, message: `Not logged in` });
+//         res.end();
+//         return;
+//     }
     
-    let userData = dbManager.getUser_Session(sessionId);
+//     let userData = dbManager.getUser_Session(sessionId);
 
-    if(!userData) {
-        res.clearCookie("phan_sessionId");
-        res.send({ success: false, message: `User data missing` });
-        res.end();
-        return;
-    }
+//     if(!userData) {
+//         res.clearCookie("phan_sessionId");
+//         res.send({ success: false, message: `User data missing` });
+//         res.end();
+//         return;
+//     }
 
-    next();
-});
+//     next();
+// });
 
 Router.post("/logout", (req, res) => {
     if(req.cookies["phan_sessionId"]) {
@@ -159,7 +159,7 @@ Router.post("/makePost", async (req, res) => {
     return;
 });
 
-Router.get("/retreivePost", async (req, res) => {
+Router.get("/retrievePost", async (req, res) => {
     let sessionId = req.cookies["phan_sessionId"]
     
     if(!sessionId) {
@@ -209,10 +209,19 @@ Router.get("/retrieveAllPosts", async (req, res) => {
         return;
     }
 
-    let allPosts = await dbManager.getAllPosts();
-    res.send(allPosts);
-    res.end();
-    return;
+    try {
+        let allPosts = await dbManager.getAllPosts();
+        res.send({ success: true, posts: allPosts });
+        res.end();
+        return;
+    }
+    catch (e){
+        console.log(`Retrieval Error`,e);
+        res.statusCode = 500;
+        res.send({ success: false, message: "Retrieval Error" });
+        res.end();
+        return;
+    }
 });
 
 Router.get("/check", (req, res) => {
@@ -231,7 +240,7 @@ Router.get("/check", (req, res) => {
         return;
     }
 
-    let userCopy = { name: userData.Username, userId: userData.UserID, profile: userData.ProfilePic, gender: userData.Gender };
+    let userCopy = { name: userData.Username, userId: userData.UserID, profile: userData.ProfilePIC, gender: userData.Gender };
 
     res.send(JSON.stringify(userCopy));
     res.end();

@@ -136,22 +136,22 @@ exports.Router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0,
     res.send({ success: true, message: `Registration complete` });
     res.end();
 }));
-exports.Router.post("*", (req, res, next) => {
-    let sessionId = req.cookies["phan_sessionId"];
-    if (!sessionId) {
-        res.send({ success: false, message: `Not logged in` });
-        res.end();
-        return;
-    }
-    let userData = dbManager.getUser_Session(sessionId);
-    if (!userData) {
-        res.clearCookie("phan_sessionId");
-        res.send({ success: false, message: `User data missing` });
-        res.end();
-        return;
-    }
-    next();
-});
+// Router.post("*", (req, res, next) => {
+//     let sessionId = req.cookies["phan_sessionId"]
+//     if(!sessionId) {
+//         res.send({ success: false, message: `Not logged in` });
+//         res.end();
+//         return;
+//     }
+//     let userData = dbManager.getUser_Session(sessionId);
+//     if(!userData) {
+//         res.clearCookie("phan_sessionId");
+//         res.send({ success: false, message: `User data missing` });
+//         res.end();
+//         return;
+//     }
+//     next();
+// });
 exports.Router.post("/logout", (req, res) => {
     if (req.cookies["phan_sessionId"]) {
         res.statusCode = 200;
@@ -187,7 +187,7 @@ exports.Router.post("/makePost", (req, res) => __awaiter(void 0, void 0, void 0,
     res.end();
     return;
 }));
-exports.Router.get("/retreivePost", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.Router.get("/retrievePost", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let sessionId = req.cookies["phan_sessionId"];
     if (!sessionId) {
         res.send({ success: false, message: `Not logged in` });
@@ -227,10 +227,19 @@ exports.Router.get("/retrieveAllPosts", (req, res) => __awaiter(void 0, void 0, 
         res.end();
         return;
     }
-    let allPosts = yield dbManager.getAllPosts();
-    res.send(allPosts);
-    res.end();
-    return;
+    try {
+        let allPosts = yield dbManager.getAllPosts();
+        res.send({ success: true, posts: allPosts });
+        res.end();
+        return;
+    }
+    catch (e) {
+        console.log(`Retrieval Error`, e);
+        res.statusCode = 500;
+        res.send({ success: false, message: "Retrieval Error" });
+        res.end();
+        return;
+    }
 }));
 exports.Router.get("/check", (req, res) => {
     let sessionId = req.cookies["phan_sessionId"];
@@ -246,7 +255,7 @@ exports.Router.get("/check", (req, res) => {
         res.end();
         return;
     }
-    let userCopy = { name: userData.Username, userId: userData.UserID, profile: userData.ProfilePic, gender: userData.Gender };
+    let userCopy = { name: userData.Username, userId: userData.UserID, profile: userData.ProfilePIC, gender: userData.Gender };
     res.send(JSON.stringify(userCopy));
     res.end();
 });

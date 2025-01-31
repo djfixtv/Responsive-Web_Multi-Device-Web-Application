@@ -27,7 +27,7 @@ export type PhanUser = {
     UserID: string,
     Username: string,
     Password: string,
-    ProfilePic: string,
+    ProfilePIC: string,
     Gender: boolean
 }
 
@@ -65,7 +65,7 @@ export const createUser = (username: string, password: string, gender: boolean, 
         UserID: "phan_u_" + crypto.randomUUID(),
         Username: username,
         Password: passHash,
-        ProfilePic: profilePic,
+        ProfilePIC: profilePic,
         Gender: gender
     }
 
@@ -75,9 +75,9 @@ export const createUser = (username: string, password: string, gender: boolean, 
         return;
     } catch(e) {}
     
-    connectionPool.query(`INSERT INTO users (UserID, Username, Password, ProfilePic, Gender) VALUES (`+
+    connectionPool.query(`INSERT INTO users (UserID, Username, Password, ProfilePIC, Gender) VALUES (`+
         `${mysql.escape(newUserData.UserID)}, ${mysql.escape(newUserData.Username)}, ${mysql.escape(newUserData.Password)},`+
-        ` ${mysql.escape(newUserData.ProfilePic)}, ${mysql.escape(newUserData.Gender)})`
+        ` ${mysql.escape(newUserData.ProfilePIC)}, ${mysql.escape(newUserData.Gender)})`
     , (err: mysql.MysqlError, result: mysql.OkPacket, fields: mysql.FieldInfo[]) => {
         if(err) { reject(err); return; }
         newUserData.ID = result.insertId;
@@ -136,18 +136,19 @@ export const getPost = (postID: string) => { return new Promise<PhanFullPost>(as
         if(rows.length != 1) { reject({ message: "Post missing" }); return; }
         let postData: PhanPost = rows[0];
         let ownerData = await getUser_ID(postData.OwnerID);
-        let fullPostData: PhanFullPost = { ...postData, OwnerName: ownerData.Username, OwnerPFP: ownerData.ProfilePic }
+        let fullPostData: PhanFullPost = { ...postData, OwnerName: ownerData.Username, OwnerPFP: ownerData.ProfilePIC }
         resolve(fullPostData); return;
     });
 }); }
 
 export const getAllPosts = () => { return new Promise<PhanFullPost[]>(async (resolve,reject) => {
+    console.log("Getting all posts from database");
     connectionPool.query(`SELECT * FROM posts`, async (err: mysql.MysqlError, rows: PhanPost[], fields: any[]) => {
         if(err) { console.log(`SQL Error!`, err); reject({ message: "SQL Error", err }); return; }
         let fullPosts = await Promise.all(rows.map(post => { return new Promise<PhanFullPost>(async (resolve) => {
             let cachedUserData = userCache.get(post.OwnerID);
             if(cachedUserData == undefined) cachedUserData = await getUser_ID(post.OwnerID);
-            let fullPost: PhanFullPost = { ...post, OwnerName: cachedUserData.Username, OwnerPFP: cachedUserData.ProfilePic };
+            let fullPost: PhanFullPost = { ...post, OwnerName: cachedUserData.Username, OwnerPFP: cachedUserData.ProfilePIC };
             resolve(fullPost);
         }); }));
         resolve(fullPosts); return;

@@ -107,7 +107,9 @@ html, body{
     .logsign{
         h1{
             margin: 0;
+            font-size: 2rem;
         }
+        
     }
 }
 
@@ -148,7 +150,7 @@ html, body{
         position: absolute;
         width: 60vw;
         a{
-            text-shadow: outline($sc, 3rem);
+            text-shadow: outline($sc, 3px);
             display:inline-block ;
             font-family: "P5MT";
             color: white;
@@ -173,27 +175,36 @@ html, body{
     background: url(img/bg-new-blur.png);
     background-size: cover;
     border: solid #840000 0.2vw;
-    a {
-        display: inline-block;
-        color: white;
-        text-shadow: outline($sc, 3.25px);
-        font-family: "P5MT-Alt";
-        font-size:  3.6rem;
-        text-decoration: none;
-        transition: 0.1s ease; 
-    }
-    a:hover {
-        transform:scale(1.1); 
-    }
     #nav-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
+        a {
+            display: inline-block;
+            color: white;
+            text-shadow: outline($sc, 3.25px);
+            font-family: "P5MT-Alt";
+            text-decoration: none;
+            transition: 0.05s ease; 
+            font-size:  3.6rem;
+        }
+        a:hover {
+            transform:scale(1.1); 
+        }
+        .nav-btn {
+            margin: 0 1vw;
+        }
+        #logoutbutton{
+            font-family: "P5MT";
+            border: none;
+            background: none;
+            color: white;
+            font-size:  3.6rem;
+            text-shadow: outline($sc, 3.25px);
+        }
     }
-    .nav-btn {
-        margin: 0 1vw;
-    }
+
 }
 
 @font-face {
@@ -557,7 +568,7 @@ html, body{
             font-size: 5rem;
             cursor:pointer;
             text-shadow: outline($sc, 3.25px);
-            transition: 0.1s ease; 
+            transition: 0.05s ease; 
         }
         #login:hover{
             transform:scale(1.1);
@@ -603,13 +614,64 @@ html, body{
             border: none;
             color: white;
             text-shadow: outline($sc, 3.25px);
-            transition: 0.1s ease; 
+            transition: 0.05s ease; 
         }
         input:hover{
             transform: scale(1.1);
         }
     }
 }
+
+.logout{
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    max-width: 45rem;
+    height: 30rem;
+    overflow: hidden;
+    border: solid black 4px;
+    border-radius: 2rem;
+    margin-top: 7rem;
+    img{
+        position: absolute;
+        border: solid black 1px;
+        // border-radius: 2rem;
+        width:100%;
+        max-width: 45rem;
+        height: 25rem;
+        z-index: 9;
+        filter: blur(3px);
+        height: 30rem;
+    }
+    h1{
+        z-index: 11;
+        margin-bottom: 1rem;
+        text-shadow: outline($sc, $sw);
+        font-size: 3rem;
+    }
+    .logout-confirm{
+        z-index: 11;
+        button{
+            width: 11rem;
+            height: 6rem;
+            font-family: "P5MT";
+            font-size: 5rem;
+            background: none;
+            border: none;
+            color: white;
+            text-shadow: outline($sc, 3.25px);
+            transition: 0.05s ease; 
+            margin: 1rem;
+        }
+        button:hover{
+            transform: scale(1.1);
+        }
+    }
+    
+}
+
 .register-outer{
     display: flex;
     flex-direction: column;
@@ -660,7 +722,7 @@ html, body{
             font-size: 5rem;
             cursor:pointer;
             text-shadow: outline($sc, 3.25px);
-            transition: 0.1s ease; 
+            transition: 0.05s ease; 
             // margin-bottom: 2rem;
         }
         #register:hover{
@@ -748,7 +810,7 @@ html, body{
             border: none;
             color: white;
             text-shadow: outline($sc, 3.25px);
-            transition: 0.1s ease; 
+            transition: 0.05s ease; 
         }
         input:hover{
             transform: scale(1.1);
