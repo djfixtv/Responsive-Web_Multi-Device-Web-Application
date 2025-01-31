@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GAY</title>
+    <title>Register</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -21,21 +21,26 @@
             <div class="register-page">
                 <div class="register-inner">
                     <h1>Register</h1>
+                    
                     <div>
                         <label for="username">Username: </label>
                         <input type="text" id="username" name="username" placeholder="Ex: JokerVRC" required>
                     </div>
+
                     <div>
                         <label for="password">Password: </label>
                         <input type="password" id="password" name="password" placeholder="Ex: iloveakechi420" required>
                     </div>
+
                     <div class="genderdiv">
                         <label class="genderlabel" id="gender" name="gender">Gender: </label>
+                        
                         <div class="gender-choice">
                             <div class="choice-container">
                                 <input type="radio" id="gender1" name="gender" value="Male">
                                 <label for="Male">Male </label>
                              </div>
+
                              <div class="choice-container">
                                 <input type="radio" id="gender2" name="gender" value="Female">
                                 <label for="Female">Female</label>
@@ -47,6 +52,14 @@
                 </div>
                 <img src="img/StarBG.png">
             </div>
+
+            <div class="error" style="display: none; flex-direction: column;">
+                    <h1>Error: Username already taken!<br>
+                    All fields cleared</h1>
+                    <input type="button" id="okbutton" name="ok" value="Ok">
+                <img src="img/StarBG.png">
+            </div>
+
         </div>
     </div>
     <script src="hover-noise.js"></script>

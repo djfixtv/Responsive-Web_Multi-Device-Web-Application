@@ -64,6 +64,10 @@ html, body{
   }
   
 .Welcome {
+    background: #00000065;
+    backdrop-filter: blur(3px);
+    border-radius: 1rem;
+    margin-top: 1.5rem;
     h1 {
       font-size: 3rem;
       // Using the function to generate the text-shadow
@@ -74,7 +78,58 @@ html, body{
       font-size: 2rem;
       text-shadow: outline($sc, $sw);
     }
+    h3{
+        font-size: 1.5rem;
+        text-align: left;
+        margin: 2rem;
+        text-shadow:outline($sc, $sw)
+    }
+    ul{
+        li{
+            font-size: 1.5rem;
+            text-align: left;
+            text-shadow:outline($sc, $sw)
+
+        }
+        margin-bottom: 3rem;
+    }
 }
+
+.Welcome2 {
+    background: #00000065;
+    backdrop-filter: blur(3px);
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    width: 15rem;
+    margin-bottom: 2rem;
+    border: solid black 4px;
+    h1 {
+      font-size: 3rem;
+      // Using the function to generate the text-shadow
+      text-shadow: outline($sc, $sw);
+    }
+
+    h2 {
+      font-size: 2rem;
+      text-shadow: outline($sc, $sw);
+    }
+    h3{
+        font-size: 1.5rem;
+        text-align: left;
+        margin: 2rem;
+        text-shadow:outline($sc, $sw)
+    }
+    ul{
+        li{
+            font-size: 1.5rem;
+            text-align: left;
+            text-shadow:outline($sc, $sw)
+
+        }
+        margin-bottom: 3rem;
+    }
+}
+
 
 
 
@@ -164,6 +219,77 @@ html, body{
         margin-bottom: 0.5rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
+        color: #c4c4c4;
+    }
+}
+#post-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    #title{
+        width: 99.1%;
+        size: 2;
+        height: 20px;
+        background-color: #640000;
+        color: #c4c4c4;
+        font-family: "P5T";
+        font-size: 1.25rem;
+        border: solid black;
+        margin-bottom: 0;
+        padding: 0.5rem;
+        resize: none;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+    #body{
+        width: 99.1%;
+        size: 2;
+        height: 100px;
+        background-color: #640000;
+        color: #c4c4c4;
+        font-family: "P5T";
+        font-size: 1.25rem;
+        border: solid black;
+        margin-bottom: 0;
+        padding: 0.5rem;
+        resize: vertical;
+        overflow: hidden;
+    }
+    textarea:focus{
+        outline:none
+    }
+    .input-inner{
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+        width: 100%;
+        align-items: center;
+        input{
+            font-family: "P5T";
+            font-size: 1.25rem;
+            color: white;
+            text-shadow: outline($sc, 1px);
+            background-color: #860000;
+            border: solid black;
+            width: 10rem;
+            height: 2.5rem;
+        }
+        input:hover{
+            background-color: #ac0000;
+        }
+        input:active{
+            background-color: #860000;
+            color: #c9c9c9;
+        }
+        h1{
+            width: 100%;
+            text-align: left;
+            font-size: 2.25rem;
+            text-shadow: outline($sc, $sw);
+            
+        }
     }
     
 }
@@ -239,6 +365,7 @@ html, body{
         border: solid black;
         margin-bottom: 0;
         padding: 0.5rem;
+        resize: vertical;
     }
     textarea:focus{
         outline:none
@@ -385,7 +512,48 @@ html, body{
             z-index: 1;
         }
     }
-    
+    .error{
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        max-width: 45rem;
+        height: 30rem;
+        overflow: hidden;
+        border: solid black 4px;
+        border-radius: 2rem;
+        img{
+            position: absolute;
+            border: solid black 1px;
+            // border-radius: 2rem;
+            width:100%;
+            max-width: 45rem;
+            height: 25rem;
+            z-index: 9;
+            filter: blur(3px);
+            height: 30rem;
+        }
+        h1{
+            z-index: 11;
+            margin-bottom: 1rem;
+            text-shadow: outline($sc, $sw)
+        }
+        input{
+            z-index: 11;
+            width: 10rem;
+            height: 6rem;
+            font-family: "P5MT";
+            font-size: 5rem;
+            background: none;
+            border: none;
+            color: white;
+            text-shadow: outline($sc, 3.25px);
+        }
+        input:hover{
+            transform: scale(1.1);
+        }
+    }
 }
 .register-outer{
     display: flex;
@@ -396,17 +564,7 @@ html, body{
     overflow: visible;
     margin-bottom: 10rem;
     
-    img{
-        position: absolute;
-        border: solid black 1px;
-        // border-radius: 2rem;
-        width:100%;
-        max-width: 45rem;
-        height: 25rem;
-        z-index: 0;
-        filter: blur(3px);
-        height: 30rem;
-    }
+    
     .register-page{
         width:100%;
         max-width: 45rem;
@@ -484,9 +642,60 @@ html, body{
                 margin-bottom: 0.9rem;
                 margin-right: 1rem;
             }
-
+        }
+        img{
+            position: absolute;
+            border: solid black 1px;
+            // border-radius: 2rem;
+            width:100%;
+            max-width: 45rem;
+            height: 25rem;
+            z-index: 0;
+            filter: blur(3px);
+            height: 30rem;
         }
     }
-    
+    .error{
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        max-width: 45rem;
+        height: 30rem;
+        overflow: hidden;
+        border: solid black 4px;
+        border-radius: 2rem;
+        img{
+            position: absolute;
+            border: solid black 1px;
+            // border-radius: 2rem;
+            width:100%;
+            max-width: 45rem;
+            height: 25rem;
+            z-index: 9;
+            filter: blur(3px);
+            height: 30rem;
+        }
+        h1{
+            z-index: 11;
+            margin-bottom: 1rem;
+            text-shadow: outline($sc, $sw)
+        }
+        input{
+            z-index: 11;
+            width: 10rem;
+            height: 6rem;
+            font-family: "P5MT";
+            font-size: 5rem;
+            background: none;
+            border: none;
+            color: white;
+            text-shadow: outline($sc, 3.25px);
+        }
+        input:hover{
+            transform: scale(1.1);
+        }
+    }
 }
 

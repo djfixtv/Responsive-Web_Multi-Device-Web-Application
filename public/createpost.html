@@ -10,22 +10,22 @@
     <audio id="HoverSound" src="audio/HoverSound.mp3"></audio>
     <div id="header">
         <div id="nav-wrapper">
-            <a class="nav-btn" href="/home">HoMe</a>            
-            <a class="nav-btn" href="/forum">PoST</a>
+            <a class="nav-btn" href="/home">HOME</a>            
+            <a class="nav-btn" href="/forum">POST</a>
             <a class="nav-btn" href="">FAQ</a>
-            <!-- <a class="nav-btn" href="">S</a> -->
         </div>
     </div>
     <div class="page">
-        <div class="Welcome">
-            <h1>
-                Welcome to the Phansite!
-            </h1>
-            <h2>
-                (Persona 5's Phantom Thieves Aficionado Forum Website)
-            </h2>
+
+        <div id="post-input">
+            <div class="input-inner">
+                <h1>Create post</h1>
+            </div>
+            <textarea name="title" id="title"></textarea>
+            <textarea name="body" id="body"></textarea>
+            <div></div>
         </div>
-    
+
     </div>
     <script src="socket.io.js"></script>
     <script src="index.js"></script>

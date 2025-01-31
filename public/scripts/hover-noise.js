@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const originalAudio = document.getElementById("HoverSound");
-    const buttons = [...document.querySelectorAll("a.nav-btn"), document.querySelector("#login")]
+    const buttons = [...document.querySelectorAll("a.nav-btn"), document.querySelector("#login"), document.querySelector("#okbutton")]
 
     buttons.forEach(button => {
         button.addEventListener("mouseover", () => {

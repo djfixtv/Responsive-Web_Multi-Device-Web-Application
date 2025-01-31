@@ -44,12 +44,66 @@ html, body {
   margin-top: 0;
 }
 
+.Welcome {
+  background: rgba(0, 0, 0, 0.3960784314);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+}
 .Welcome h1 {
   font-size: 3rem;
   text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
 }
 .Welcome h2 {
   font-size: 2rem;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+}
+.Welcome h3 {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 2rem;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+}
+.Welcome ul {
+  margin-bottom: 3rem;
+}
+.Welcome ul li {
+  font-size: 1.5rem;
+  text-align: left;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+}
+
+.Welcome2 {
+  background: rgba(0, 0, 0, 0.3960784314);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+  width: 15rem;
+  margin-bottom: 2rem;
+  border: solid black 4px;
+}
+.Welcome2 h1 {
+  font-size: 3rem;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+}
+.Welcome2 h2 {
+  font-size: 2rem;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+}
+.Welcome2 h3 {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 2rem;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+}
+.Welcome2 ul {
+  margin-bottom: 3rem;
+}
+.Welcome2 ul li {
+  font-size: 1.5rem;
+  text-align: left;
   text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
 }
 
@@ -137,6 +191,77 @@ html, body {
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  color: #c4c4c4;
+}
+
+#post-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+#post-input #title {
+  width: 99.1%;
+  size: 2;
+  height: 20px;
+  background-color: #640000;
+  color: #c4c4c4;
+  font-family: "P5T";
+  font-size: 1.25rem;
+  border: solid black;
+  margin-bottom: 0;
+  padding: 0.5rem;
+  resize: none;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+#post-input #body {
+  width: 99.1%;
+  size: 2;
+  height: 100px;
+  background-color: #640000;
+  color: #c4c4c4;
+  font-family: "P5T";
+  font-size: 1.25rem;
+  border: solid black;
+  margin-bottom: 0;
+  padding: 0.5rem;
+  resize: vertical;
+  overflow: hidden;
+}
+#post-input textarea:focus {
+  outline: none;
+}
+#post-input .input-inner {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  width: 100%;
+  align-items: center;
+}
+#post-input .input-inner input {
+  font-family: "P5T";
+  font-size: 1.25rem;
+  color: white;
+  text-shadow: -2px 0 black, 0px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, -1px 0 black, 0px 1px 0 black;
+  background-color: #860000;
+  border: solid black;
+  width: 10rem;
+  height: 2.5rem;
+}
+#post-input .input-inner input:hover {
+  background-color: #ac0000;
+}
+#post-input .input-inner input:active {
+  background-color: #860000;
+  color: #c9c9c9;
+}
+#post-input .input-inner h1 {
+  width: 100%;
+  text-align: left;
+  font-size: 2.25rem;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
 }
 
 .Post-Page-Template {
@@ -211,6 +336,7 @@ html, body {
   border: solid black;
   margin-bottom: 0;
   padding: 0.5rem;
+  resize: vertical;
 }
 #comment-input textarea:focus {
   outline: none;
@@ -351,6 +477,47 @@ html, body {
 .login-outer .login-page .login-inner {
   z-index: 1;
 }
+.login-outer .error {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  max-width: 45rem;
+  height: 30rem;
+  overflow: hidden;
+  border: solid black 4px;
+  border-radius: 2rem;
+}
+.login-outer .error img {
+  position: absolute;
+  border: solid black 1px;
+  width: 100%;
+  max-width: 45rem;
+  height: 25rem;
+  z-index: 9;
+  filter: blur(3px);
+  height: 30rem;
+}
+.login-outer .error h1 {
+  z-index: 11;
+  margin-bottom: 1rem;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+}
+.login-outer .error input {
+  z-index: 11;
+  width: 10rem;
+  height: 6rem;
+  font-family: "P5MT";
+  font-size: 5rem;
+  background: none;
+  border: none;
+  color: white;
+  text-shadow: -6.5px 0 black, 0px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, -3.25px 0 black, 0px 3.25px 0 black;
+}
+.login-outer .error input:hover {
+  transform: scale(1.1);
+}
 
 .register-outer {
   display: flex;
@@ -360,16 +527,6 @@ html, body {
   width: 100%;
   overflow: visible;
   margin-bottom: 10rem;
-}
-.register-outer img {
-  position: absolute;
-  border: solid black 1px;
-  width: 100%;
-  max-width: 45rem;
-  height: 25rem;
-  z-index: 0;
-  filter: blur(3px);
-  height: 30rem;
 }
 .register-outer .register-page {
   width: 100%;
@@ -447,4 +604,55 @@ html, body {
 .register-outer .register-page .choice-container input {
   margin-bottom: 0.9rem;
   margin-right: 1rem;
+}
+.register-outer .register-page img {
+  position: absolute;
+  border: solid black 1px;
+  width: 100%;
+  max-width: 45rem;
+  height: 25rem;
+  z-index: 0;
+  filter: blur(3px);
+  height: 30rem;
+}
+.register-outer .error {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  max-width: 45rem;
+  height: 30rem;
+  overflow: hidden;
+  border: solid black 4px;
+  border-radius: 2rem;
+}
+.register-outer .error img {
+  position: absolute;
+  border: solid black 1px;
+  width: 100%;
+  max-width: 45rem;
+  height: 25rem;
+  z-index: 9;
+  filter: blur(3px);
+  height: 30rem;
+}
+.register-outer .error h1 {
+  z-index: 11;
+  margin-bottom: 1rem;
+  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+}
+.register-outer .error input {
+  z-index: 11;
+  width: 10rem;
+  height: 6rem;
+  font-family: "P5MT";
+  font-size: 5rem;
+  background: none;
+  border: none;
+  color: white;
+  text-shadow: -6.5px 0 black, 0px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, -3.25px 0 black, 0px 3.25px 0 black;
+}
+.register-outer .error input:hover {
+  transform: scale(1.1);
 }/*# sourceMappingURL=index.css.map */

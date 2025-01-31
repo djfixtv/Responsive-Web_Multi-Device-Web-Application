@@ -42,6 +42,7 @@ const path_1 = __importDefault(require("path"));
 const sio = __importStar(require("socket.io"));
 const dotenv = __importStar(require("dotenv"));
 const dbManager = __importStar(require("./dbManager"));
+const apiRouter_1 = require("./apiRouter");
 dotenv.config({ path: path_1.default.join(__dirname, `../.env`) });
 dbManager.initialize();
 const cookieParser = require("cookie-parser");
@@ -49,6 +50,7 @@ const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 const ios = new sio.Server(server);
 app.use(cookieParser());
+app.use("/api", apiRouter_1.Router);
 app.all("*", (req, res, next) => {
     if (req.socket.remoteAddress == null) {
         return;

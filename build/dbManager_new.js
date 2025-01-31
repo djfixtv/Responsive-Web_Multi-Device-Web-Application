@@ -42,28 +42,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUser_Session = exports.clearSession = exports.createSession = exports.getAllPosts = exports.getPost = exports.createPost = exports.getUser_ID = exports.getUser_Name = exports.createUser = exports.initialize = void 0;
-const bcrypt = __importStar(require("bcrypt"));
+exports.getUser_Session = exports.clearSession = exports.createSession = exports.getAllPosts = exports.getPost = exports.createPost = exports.getUser_ID = exports.getUser_Name = exports.createUser = void 0;
 const crypto = __importStar(require("node:crypto"));
-const mysql = __importStar(require("mysql"));
-let connectionPool;
-const initialize = () => {
-    connectionPool = mysql.createPool({
-        host: process.env.SQL_HOST,
-        port: Number(process.env.SQL_PORT),
-        user: process.env.SQL_USER,
-        password: process.env.SQL_PASS,
-        database: process.env.SQL_DATABASE,
-        connectionLimit: 10
-    });
+const bcrypt = __importStar(require("bcrypt"));
+let testUser = {
+    ID: 1,
+    UserID: "ab-cd-ef-gh",
+    Username: "John Smith",
+    Password: "password123",
+    ProfilePic: "unknown.png",
+    Gender: false
 };
-exports.initialize = initialize;
+let testPost = {
+    ID: 1,
+    PostID: "ab-cd-ef-gh",
+    OwnerID: "ab-cd-ef-gh",
+    Content: "Fuck you."
+};
 const nameMap = new Map(); // User name => Phansite User
 const userMap = new Map(); // User ID => Phansite User
 const sessionMap = new Map(); // Session ID => Phansite User
 const postMap = new Map(); // Post ID => Phansite Post
+nameMap.set(testUser.Username, testUser);
+userMap.set(testUser.UserID, testUser);
+postMap.set(testPost.PostID, testPost);
 const createUser = (username, password, gender) => {
-    return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
+    return new Promise((resolve) => __awaiter(void 0, void 0, void 0, function* () {
         let passHash = yield bcrypt.hash(password, 10);
         let newUserData = {
             ID: userMap.size + 1,
@@ -79,15 +83,21 @@ const createUser = (username, password, gender) => {
     }));
 };
 exports.createUser = createUser;
-const getUser_Name = (username) => { return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () { })); };
+const getUser_Name = (username) => { return new Promise((resolve, reject) => { let data = nameMap.get(username); if (data != undefined)
+    resolve(data);
+else
+    reject("Account missing"); }); };
 exports.getUser_Name = getUser_Name;
-const getUser_ID = (userID) => { return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () { })); };
+const getUser_ID = (userId) => { return new Promise((resolve, reject) => { let data = userMap.get(userId); if (data != undefined)
+    resolve(data);
+else
+    reject("Account missing"); }); };
 exports.getUser_ID = getUser_ID;
-const createPost = (userID, content) => { return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () { })); };
+const createPost = (content, userId) => { return new Promise(resolve => { resolve(testPost); }); };
 exports.createPost = createPost;
-const getPost = (postID) => { return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () { })); };
+const getPost = (postId) => { return new Promise(resolve => { resolve(testPost); }); };
 exports.getPost = getPost;
-const getAllPosts = () => { return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () { })); };
+const getAllPosts = () => { return new Promise(resolve => { resolve(testPost); }); };
 exports.getAllPosts = getAllPosts;
 const createSession = (userId) => {
     const sessionId = "phan_s_" + crypto.randomUUID();
