@@ -53,6 +53,6 @@ dbManager.initialize();
 const sleep = (time) => { return new Promise(resolve => { setTimeout(() => { resolve(); }, time * 1000); }); };
 (() => __awaiter(void 0, void 0, void 0, function* () {
     yield sleep(1);
-    const user = yield dbManager.createUser("JokerVRC", "iloveakechi420", false);
+    const user = yield dbManager.createUser("JokerVRC", "iloveakechi420", false, "img/pfps/male/Joker.png");
     console.log(user);
 }))();

@@ -36,6 +36,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ios = void 0;
 const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
 const path_1 = __importDefault(require("path"));
@@ -48,7 +49,7 @@ dbManager.initialize();
 const cookieParser = require("cookie-parser");
 const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
-const ios = new sio.Server(server);
+exports.ios = new sio.Server(server);
 app.use(cookieParser());
 app.use("/api", apiRouter_1.Router);
 app.all("*", (req, res, next) => {
@@ -78,7 +79,7 @@ app.get("*", (req, res) => {
 });
 // app.get("*", (req, res) => { res.statusCode = 404; res.sendFile(path.join(__dirname,"../public/error.html")); });
 app.all("*", (req, res) => { res.statusCode = 403; res.send(`Unknown Endpoint`); res.end(); });
-ios.on("connect", (socket) => {
+exports.ios.on("connect", (socket) => {
     console.log(`Socket connected from ${socket.conn.remoteAddress.replace("::ffff:", "")}`);
     socket.on("disconnect", () => { console.log(`Socket disconnect ${socket.conn.remoteAddress.replace("::ffff:", "")}`); });
     socket.on("chatMessage", data => {
@@ -86,6 +87,6 @@ ios.on("connect", (socket) => {
         socket.broadcast.emit("chatMessage", data);
     });
 });
-let port = 80;
+let port = Number(process.env.PORT);
 server.on("listening", () => { console.log(`Server is now listening on port ${port}`); });
 server.listen(port);

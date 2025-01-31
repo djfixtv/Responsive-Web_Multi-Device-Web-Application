@@ -53,17 +53,17 @@ html, body {
 }
 .Welcome h1 {
   font-size: 3rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .Welcome h2 {
   font-size: 2rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .Welcome h3 {
   font-size: 1.5rem;
   text-align: left;
   margin: 2rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .Welcome ul {
   margin-bottom: 3rem;
@@ -71,7 +71,21 @@ html, body {
 .Welcome ul li {
   font-size: 1.5rem;
   text-align: left;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
+}
+.Welcome a {
+  font-family: "P5MT";
+  font-size: 4rem;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
+}
+.Welcome a:hover {
+  transform: scale(1.1);
+}
+.Welcome .logsign h1 {
+  margin: 0;
 }
 
 .Welcome2 {
@@ -81,22 +95,22 @@ html, body {
   border-radius: 1rem;
   margin-top: 1.5rem;
   width: 15rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   border: solid black 4px;
 }
 .Welcome2 h1 {
   font-size: 3rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .Welcome2 h2 {
   font-size: 2rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .Welcome2 h3 {
   font-size: 1.5rem;
   text-align: left;
   margin: 2rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .Welcome2 ul {
   margin-bottom: 3rem;
@@ -104,7 +118,23 @@ html, body {
 .Welcome2 ul li {
   font-size: 1.5rem;
   text-align: left;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
+}
+.Welcome2 .postbutton-container {
+  position: absolute;
+  width: 60vw;
+}
+.Welcome2 .postbutton-container a {
+  text-shadow: -3rem -3rem 0 black, 3rem -3rem 0 black, -3rem 3rem 0 black, 3rem 3rem 0 black, -3rem 0px 0 black, 3rem 0px 0 black, 0px -3rem 0 black, 0px 3rem 0 black;
+  display: inline-block;
+  font-family: "P5MT";
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+.Welcome2 .postbutton-container a:hover {
+  transform: scale(1.1);
 }
 
 #header {
@@ -119,9 +149,9 @@ html, body {
 #header a {
   display: inline-block;
   color: white;
-  text-shadow: -6.5px 0 black, 0px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, -3.25px 0 black, 0px 3.25px 0 black;
+  text-shadow: -3.25px -3.25px 0 black, 3.25px -3.25px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, 0px -3.25px 0 black, 0px 3.25px 0 black;
   font-family: "P5MT-Alt";
-  font-size: 3vw;
+  font-size: 3.6rem;
   text-decoration: none;
   transition: 0.1s ease;
 }
@@ -161,7 +191,7 @@ html, body {
   background-attachment: fixed;
   font-family: "P5T";
   color: white;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
   text-decoration: none;
 }
 .Post-Template .post-title {
@@ -187,39 +217,54 @@ html, body {
 }
 .Post-Template p {
   font-size: 1.5rem;
-  margin-top: 0.3rem;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   color: #c4c4c4;
 }
 
-#post-input {
+.input-outer {
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  border: solid black;
+  border-radius: 2rem;
+  background-color: rgba(0, 0, 0, 0.3019607843);
+  min-height: 85%;
+}
+.input-outer #post-input {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 90%;
+  margin-bottom: 2rem;
 }
-#post-input #title {
+.input-outer #post-input #title {
   width: 99.1%;
   size: 2;
-  height: 20px;
+  height: 2rem;
   background-color: #640000;
-  color: #c4c4c4;
+  color: #ffffff;
   font-family: "P5T";
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   border: solid black;
+  border-radius: 1rem;
   margin-bottom: 0;
   padding: 0.5rem;
   resize: none;
   margin-bottom: 1rem;
   overflow: hidden;
 }
-#post-input #body {
+.input-outer #post-input #body {
   width: 99.1%;
   size: 2;
-  height: 100px;
+  height: 10rem;
   background-color: #640000;
   color: #c4c4c4;
   font-family: "P5T";
@@ -229,39 +274,41 @@ html, body {
   padding: 0.5rem;
   resize: vertical;
   overflow: hidden;
+  border-radius: 1rem;
 }
-#post-input textarea:focus {
+.input-outer #post-input textarea:focus {
   outline: none;
 }
-#post-input .input-inner {
+.input-outer #post-input .input-inner {
   display: flex;
   flex-direction: row;
   margin: 10px;
   width: 100%;
   align-items: center;
+  justify-content: end;
 }
-#post-input .input-inner input {
+.input-outer #post-input .input-inner input {
   font-family: "P5T";
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   color: white;
-  text-shadow: -2px 0 black, 0px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, -1px 0 black, 0px 1px 0 black;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, 0px -1px 0 black, 0px 1px 0 black;
   background-color: #860000;
   border: solid black;
   width: 10rem;
-  height: 2.5rem;
+  height: 3rem;
 }
-#post-input .input-inner input:hover {
+.input-outer #post-input .input-inner input:hover {
   background-color: #ac0000;
 }
-#post-input .input-inner input:active {
+.input-outer #post-input .input-inner input:active {
   background-color: #860000;
   color: #c9c9c9;
 }
-#post-input .input-inner h1 {
+.input-outer #post-input .input-inner h1 {
   width: 100%;
   text-align: left;
   font-size: 2.25rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 
 .Post-Page-Template {
@@ -271,11 +318,12 @@ html, body {
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
   background-color: rgba(0, 0, 0, 0.438);
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .Post-Page-Template p {
   color: #c4c4c4;
-  text-shadow: 0px 0 black, 0px 0 black, 0px 0px 0 black, 0px 0px 0 black, 0px 0px 0 black, 0px 0px 0 black, 0px 0 black, 0px 0px 0 black;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, 0px -1px 0 black, 0px 1px 0 black;
+  margin-top: 10rem;
 }
 .Post-Page-Template .userinfo {
   display: flex;
@@ -293,7 +341,7 @@ html, body {
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   color: white;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black !important;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black !important;
 }
 .Post-Page-Template .post-title {
   display: flex;
@@ -312,7 +360,7 @@ html, body {
 }
 .Post-Page-Template p {
   font-size: 1.5rem;
-  margin-top: 0.3rem;
+  margin-top: 0.7rem;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -352,7 +400,7 @@ html, body {
   font-family: "P5T";
   font-size: 1.25rem;
   color: white;
-  text-shadow: -2px 0 black, 0px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, -1px 0 black, 0px 1px 0 black;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, 0px -1px 0 black, 0px 1px 0 black;
   background-color: #860000;
   border: solid black;
   width: 10rem;
@@ -381,7 +429,7 @@ html, body {
   border-left: solid black;
   border-right: solid black;
   border-bottom: solid black;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .Comment-Template .comment {
   width: 70vw;
@@ -389,7 +437,7 @@ html, body {
 }
 .Comment-Template .comment p {
   color: #c4c4c4;
-  text-shadow: 0px 0 black, 0px 0 black, 0px 0px 0 black, 0px 0px 0 black, 0px 0px 0 black, 0px 0px 0 black, 0px 0 black, 0px 0px 0 black;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, 0px -1px 0 black, 0px 1px 0 black;
 }
 .Comment-Template .comment .userinfo {
   display: flex;
@@ -409,7 +457,7 @@ html, body {
 }
 .Comment-Template .comment p {
   font-size: 1.25rem;
-  margin: 0.2rem;
+  margin: 0.3rem;
 }
 
 .login-outer {
@@ -449,7 +497,7 @@ html, body {
   display: inline-block;
   font-size: 3rem;
   width: 11rem;
-  text-shadow: -6px 0 black, 0px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, -3px 0 black, 0px 3px 0 black;
+  text-shadow: -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, 0px -3px 0 black, 0px 3px 0 black;
 }
 .login-outer .login-page input {
   font-size: 2rem;
@@ -459,7 +507,7 @@ html, body {
   margin-top: 0;
   margin-bottom: 1.5rem;
   font-size: 4rem;
-  text-shadow: -6px 0 black, 0px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, -3px 0 black, 0px 3px 0 black;
+  text-shadow: -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, 0px -3px 0 black, 0px 3px 0 black;
 }
 .login-outer .login-page #login {
   margin-top: 2rem;
@@ -469,7 +517,8 @@ html, body {
   color: white;
   font-size: 5rem;
   cursor: pointer;
-  text-shadow: -6.5px 0 black, 0px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, -3.25px 0 black, 0px 3.25px 0 black;
+  text-shadow: -3.25px -3.25px 0 black, 3.25px -3.25px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, 0px -3.25px 0 black, 0px 3.25px 0 black;
+  transition: 0.1s ease;
 }
 .login-outer .login-page #login:hover {
   transform: scale(1.1);
@@ -502,7 +551,7 @@ html, body {
 .login-outer .error h1 {
   z-index: 11;
   margin-bottom: 1rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .login-outer .error input {
   z-index: 11;
@@ -513,7 +562,8 @@ html, body {
   background: none;
   border: none;
   color: white;
-  text-shadow: -6.5px 0 black, 0px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, -3.25px 0 black, 0px 3.25px 0 black;
+  text-shadow: -3.25px -3.25px 0 black, 3.25px -3.25px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, 0px -3.25px 0 black, 0px 3.25px 0 black;
+  transition: 0.1s ease;
 }
 .login-outer .error input:hover {
   transform: scale(1.1);
@@ -547,7 +597,7 @@ html, body {
   display: inline-block;
   font-size: 3rem;
   width: 11rem;
-  text-shadow: -6px 0 black, 0px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, -3px 0 black, 0px 3px 0 black;
+  text-shadow: -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, 0px -3px 0 black, 0px 3px 0 black;
 }
 .register-outer .register-page input {
   font-size: 2rem;
@@ -557,9 +607,9 @@ html, body {
   margin-top: 0;
   margin-bottom: 1.5rem;
   font-size: 4rem;
-  text-shadow: -6px 0 black, 0px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, -3px 0 black, 0px 3px 0 black;
+  text-shadow: -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, 0px -3px 0 black, 0px 3px 0 black;
 }
-.register-outer .register-page #login {
+.register-outer .register-page #register {
   margin-top: 2rem;
   background: none;
   border: none;
@@ -567,9 +617,10 @@ html, body {
   color: white;
   font-size: 5rem;
   cursor: pointer;
-  text-shadow: -6.5px 0 black, 0px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, -3.25px 0 black, 0px 3.25px 0 black;
+  text-shadow: -3.25px -3.25px 0 black, 3.25px -3.25px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, 0px -3.25px 0 black, 0px 3.25px 0 black;
+  transition: 0.1s ease;
 }
-.register-outer .register-page #login:hover {
+.register-outer .register-page #register:hover {
   transform: scale(1.1);
 }
 .register-outer .register-page .register-inner {
@@ -640,7 +691,7 @@ html, body {
 .register-outer .error h1 {
   z-index: 11;
   margin-bottom: 1rem;
-  text-shadow: -4px 0 black, 0px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, -2px 0 black, 0px 2px 0 black;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
 .register-outer .error input {
   z-index: 11;
@@ -651,7 +702,8 @@ html, body {
   background: none;
   border: none;
   color: white;
-  text-shadow: -6.5px 0 black, 0px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, -3.25px 0 black, 0px 3.25px 0 black;
+  text-shadow: -3.25px -3.25px 0 black, 3.25px -3.25px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, 0px -3.25px 0 black, 0px 3.25px 0 black;
+  transition: 0.1s ease;
 }
 .register-outer .error input:hover {
   transform: scale(1.1);

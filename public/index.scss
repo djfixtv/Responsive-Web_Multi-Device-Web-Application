@@ -51,16 +51,16 @@ html, body{
 }
 
 // Function for generating text-shadow
-@function outline($color, $width) {
+@function outline($sc, $sw) {
     @return 
-      -$width -$width 0 $color,
-       $width -$width 0 $color,
-      -$width  $width 0 $color,
-       $width  $width 0 $color,
-      -$width  0px 0 $color,
-       $width  0px 0 $color,
-       0px -$width 0 $color,
-       0px  $width 0 $color;
+      (-$sw) (-$sw) 0 $sc,
+       $sw (-$sw) 0 $sc,
+      (-$sw)  $sw 0 $sc,
+       $sw  $sw 0 $sc,
+      (-$sw)  0px 0 $sc,
+       $sw  0px 0 $sc,
+       0px (-$sw) 0 $sc,
+       0px  $sw 0 $sc;
   }
   
 .Welcome {
@@ -93,6 +93,22 @@ html, body{
         }
         margin-bottom: 3rem;
     }
+    a{
+        font-family: "P5MT";
+        font-size: 4rem;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        text-shadow: outline($sc, $sw);
+    }
+    a:hover{
+        transform: scale(1.1);
+    }
+    .logsign{
+        h1{
+            margin: 0;
+        }
+    }
 }
 
 .Welcome2 {
@@ -101,7 +117,7 @@ html, body{
     border-radius: 1rem;
     margin-top: 1.5rem;
     width: 15rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     border: solid black 4px;
     h1 {
       font-size: 3rem;
@@ -128,6 +144,22 @@ html, body{
         }
         margin-bottom: 3rem;
     }
+    .postbutton-container{
+        position: absolute;
+        width: 60vw;
+        a{
+            text-shadow: outline($sc, 3rem);
+            display:inline-block ;
+            font-family: "P5MT";
+            color: white;
+            text-decoration: none;
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+        a:hover{
+            transform: scale(1.1);
+        }
+    }
 }
 
 
@@ -146,12 +178,12 @@ html, body{
         color: white;
         text-shadow: outline($sc, 3.25px);
         font-family: "P5MT-Alt";
-        font-size: 3vw;
+        font-size:  3.6rem;
         text-decoration: none;
         transition: 0.1s ease; 
     }
     a:hover {
-        transform:scale(1.1) ; 
+        transform:scale(1.1); 
     }
     #nav-wrapper {
         display: flex;
@@ -215,84 +247,103 @@ html, body{
     }
     p{
         font-size: 1.5rem;
-        margin-top: 0.3rem;
+        margin-top: 1rem;
         margin-bottom: 0.5rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
         color: #c4c4c4;
     }
 }
-#post-input{
+.input-outer{
+    backdrop-filter: blur(3px);
+    width: 90vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: start;
     justify-content: center;
-    align-items: center;
-    width: 90%;
-    #title{
-        width: 99.1%;
-        size: 2;
-        height: 20px;
-        background-color: #640000;
-        color: #c4c4c4;
-        font-family: "P5T";
-        font-size: 1.25rem;
-        border: solid black;
-        margin-bottom: 0;
-        padding: 0.5rem;
-        resize: none;
-        margin-bottom: 1rem;
-        overflow: hidden;
-    }
-    #body{
-        width: 99.1%;
-        size: 2;
-        height: 100px;
-        background-color: #640000;
-        color: #c4c4c4;
-        font-family: "P5T";
-        font-size: 1.25rem;
-        border: solid black;
-        margin-bottom: 0;
-        padding: 0.5rem;
-        resize: vertical;
-        overflow: hidden;
-    }
-    textarea:focus{
-        outline:none
-    }
-    .input-inner{
+    border: solid black;
+    border-radius: 2rem;
+    background-color: #0000004d;
+    min-height: 85%;
+
+    #post-input{
         display: flex;
-        flex-direction: row;
-        margin: 10px;
-        width: 100%;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        input{
+        width: 90%;
+        margin-bottom: 2rem;
+        
+        #title{
+            width: 99.1%;
+            size: 2;
+            height: 2rem;
+            background-color: #640000;
+            color: #ffffff;
+            font-family: "P5T";
+            font-size: 1.50rem;
+            border: solid black;
+            border-radius: 1rem;
+            margin-bottom: 0;
+            padding: 0.5rem;
+            resize: none;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        #body{
+            width: 99.1%;
+            size: 2;
+            height: 10rem;
+            background-color: #640000;
+            color: #c4c4c4;
             font-family: "P5T";
             font-size: 1.25rem;
-            color: white;
-            text-shadow: outline($sc, 1px);
-            background-color: #860000;
             border: solid black;
-            width: 10rem;
-            height: 2.5rem;
+            margin-bottom: 0;
+            padding: 0.5rem;
+            resize: vertical;
+            overflow: hidden;
+            border-radius: 1rem;
         }
-        input:hover{
-            background-color: #ac0000;
+        textarea:focus{
+            outline:none
         }
-        input:active{
-            background-color: #860000;
-            color: #c9c9c9;
-        }
-        h1{
+        .input-inner{
+            display: flex;
+            flex-direction: row;
+            margin: 10px;
             width: 100%;
-            text-align: left;
-            font-size: 2.25rem;
-            text-shadow: outline($sc, $sw);
-            
+            align-items: center;
+            justify-content: end;
+            input{
+                font-family: "P5T";
+                font-size: 2.5rem;
+                color: white;
+                text-shadow: outline($sc, 1px);
+                background-color: #860000;
+                border: solid black;
+                width: 10rem;
+                height: 3rem;
+            }
+            input:hover{
+                background-color: #ac0000;
+            }
+            input:active{
+                background-color: #860000;
+                color: #c9c9c9;
+            }
+            h1{
+                width: 100%;
+                text-align: left;
+                font-size: 2.25rem;
+                text-shadow: outline($sc, $sw);
+                
+            }
         }
+        
     }
-    
 }
+
 .Post-Page-Template{
     width: 90%;
     text-align: left;
@@ -302,7 +353,8 @@ html, body{
     text-shadow: outline($sc, $sw);
     p{
         color: #c4c4c4;
-        text-shadow: outline($sc, 0px);
+        text-shadow: outline($sc, 1px);
+        margin-top: 10rem;
     }
     
     .userinfo{
@@ -341,7 +393,7 @@ html, body{
     }
     p{
         font-size: 1.5rem;
-        margin-top: 0.3rem;
+        margin-top: 0.7rem;
         margin-bottom: 0.5rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
@@ -363,6 +415,7 @@ html, body{
         font-family: "P5T";
         font-size: 1.25rem;
         border: solid black;
+        
         margin-bottom: 0;
         padding: 0.5rem;
         resize: vertical;
@@ -420,7 +473,7 @@ html, body{
         text-align: left;
         p{
             color: #c4c4c4;
-            text-shadow: outline($sc, 0px);
+            text-shadow: outline($sc, 1px);
         }
         .userinfo{
             display: flex;
@@ -440,7 +493,7 @@ html, body{
         }
         p{
             font-size: 1.25rem;
-            margin: 0.2rem;
+            margin: 0.3rem;
         }
     }
 }
@@ -503,7 +556,8 @@ html, body{
             color: white;
             font-size: 5rem;
             cursor:pointer;
-            text-shadow: outline($sc, 3.25px)
+            text-shadow: outline($sc, 3.25px);
+            transition: 0.1s ease; 
         }
         #login:hover{
             transform:scale(1.1);
@@ -549,6 +603,7 @@ html, body{
             border: none;
             color: white;
             text-shadow: outline($sc, 3.25px);
+            transition: 0.1s ease; 
         }
         input:hover{
             transform: scale(1.1);
@@ -596,7 +651,7 @@ html, body{
             font-size: 4rem;
             text-shadow: outline($sc, 3px);
         }
-        #login{
+        #register{
             margin-top: 2rem;
             background: none;
             border: none;
@@ -605,9 +660,10 @@ html, body{
             font-size: 5rem;
             cursor:pointer;
             text-shadow: outline($sc, 3.25px);
+            transition: 0.1s ease; 
             // margin-bottom: 2rem;
         }
-        #login:hover{
+        #register:hover{
             transform:scale(1.1);
         }
         .register-inner{
@@ -692,10 +748,13 @@ html, body{
             border: none;
             color: white;
             text-shadow: outline($sc, 3.25px);
+            transition: 0.1s ease; 
         }
         input:hover{
             transform: scale(1.1);
         }
     }
 }
+
+
 

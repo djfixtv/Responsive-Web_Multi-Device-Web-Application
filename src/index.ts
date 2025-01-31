@@ -14,7 +14,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const server = http.createServer(app);
 
-const ios = new sio.Server(server);
+export const ios = new sio.Server(server);
 
 app.use(cookieParser());
 app.use("/api", apiRouter);
@@ -62,6 +62,6 @@ ios.on("connect", (socket) => {
     });
 });
 
-let port = 80;
+let port = Number(process.env.PORT);
 server.on("listening", () => { console.log(`Server is now listening on port ${port}`); });
 server.listen(port);

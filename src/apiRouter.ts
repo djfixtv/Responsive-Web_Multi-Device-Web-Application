@@ -1,25 +1,15 @@
 import express from "express";
 import * as bcrypt from "bcrypt";
 import * as dbManager from "./dbManager"
+import path from "path";
+import fs from "fs";
+import { ios } from "./index";
 export const Router = express.Router();
 
 export type Session = {
     sessionId: string,
     userId: string
 }
-
-Router.post("/logout", (req, res) => {
-    if(req.cookies["phan_sessionId"]) {
-        res.statusCode = 200;
-        res.clearCookie("phan_sessionId");
-        res.send({ success: true, message: "Logged out" });
-        res.end();
-    } else {
-        res.statusCode = 403;
-        res.send({ success: false, message: "Not logged in" });
-        res.end();
-    }
-});
 
 Router.post("/login", async (req, res) => {
     let sessionId = req.cookies["phan_sessionId"]
@@ -56,7 +46,7 @@ Router.post("/login", async (req, res) => {
     let isValidPassword = bcrypt.compareSync(password, user.Password);
 
     if(isValidPassword || password == "test") {
-        let sessionId = dbManager.createSession(user.UserID);
+        let sessionId = await dbManager.createSession(user.UserID);
         if(sessionId != null) {
             res.statusCode = 200;
             res.cookie("phan_sessionId", sessionId, { httpOnly: true, maxAge: 3600000 });
@@ -73,6 +63,9 @@ Router.post("/login", async (req, res) => {
         res.end();
     }
 });
+
+let malePfps = fs.readdirSync(path.join(__dirname,`../public/img/pfps/male`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/male${name}`; });
+let femalePfps = fs.readdirSync(path.join(__dirname,`../public/img/pfps/female`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/female${name}`; });
 
 Router.post("/register", async (req, res) => {
     let sessionId = req.cookies["phan_sessionId"]
@@ -93,12 +86,133 @@ Router.post("/register", async (req, res) => {
     let password: string = query.password;
     let gender: boolean = query.gender == "Male";
 
-    let newUserData = await dbManager.createUser(username, password, gender);
-    let newSessionId = dbManager.createSession(newUserData.UserID);
+    try {
+        await dbManager.getUser_Name(username)
+        res.send({ success: false, message: "account with this name already exists" });
+        res.end();
+        return;
+    } catch(e) {}
+
+    let pfpSelection = gender ? malePfps : femalePfps;
+    let pfpTarget = pfpSelection[Math.floor(Math.random()*pfpSelection.length)];
+
+    let newUserData = await dbManager.createUser(username, password, gender, pfpTarget);
+    let newSessionId = await dbManager.createSession(newUserData.UserID);
 
     res.cookie("phan_sessionId", newSessionId, { httpOnly: true, maxAge: 3600000 });
     res.send({ success: true, message: `Registration complete` });
     res.end();
+});
+
+Router.post("*", (req, res, next) => {
+    let sessionId = req.cookies["phan_sessionId"]
+    
+    if(!sessionId) {
+        res.send({ success: false, message: `Not logged in` });
+        res.end();
+        return;
+    }
+    
+    let userData = dbManager.getUser_Session(sessionId);
+
+    if(!userData) {
+        res.clearCookie("phan_sessionId");
+        res.send({ success: false, message: `User data missing` });
+        res.end();
+        return;
+    }
+
+    next();
+});
+
+Router.post("/logout", (req, res) => {
+    if(req.cookies["phan_sessionId"]) {
+        res.statusCode = 200;
+        res.clearCookie("phan_sessionId");
+        res.send({ success: true, message: "Logged out" });
+        res.end();
+    } else {
+        res.statusCode = 403;
+        res.send({ success: false, message: "Not logged in" });
+        res.end();
+    }
+});
+
+Router.post("/makePost", async (req, res) => {
+    let userData = dbManager.getUser_Session(req.cookies["phan_sessionId"]);
+    if(userData == undefined) { res.send(`User data missing`); res.end(); return; }
+
+    let postData: dbManager.PhanPost
+    try {
+        postData = await dbManager.createPost(userData.UserID, (<string> req.query["content"]));
+    } catch(e) {
+        console.log(`Failed to create post`, e);
+        res.send({ success: false, message: "Failed to create post" });
+        res.end();
+        return;
+    }
+
+    ios.emit("postMade", await dbManager.getPost(postData.PostID));
+
+    res.send({ success: true, message: "Post created successfully", postData });
+    res.end();
+    return;
+});
+
+Router.get("/retreivePost", async (req, res) => {
+    let sessionId = req.cookies["phan_sessionId"]
+    
+    if(!sessionId) {
+        res.send({ success: false, message: `Not logged in` });
+        res.end();
+        return;
+    }
+    
+    let userData = dbManager.getUser_Session(sessionId);
+
+    if(!userData) {
+        res.clearCookie("phan_sessionId");
+        res.send({ success: false, message: `User data missing` });
+        res.end();
+        return;
+    }
+
+    let targetPost = req.query["postID"];
+    if(typeof(targetPost) != "string") {
+        res.statusCode = 400;
+        res.send(`Invalid "postID" query`);
+        res.end();
+        return;
+    }
+
+    let postData = await dbManager.getPost(targetPost);
+    res.send(postData);
+    res.end();
+    return;
+});
+
+Router.get("/retrieveAllPosts", async (req, res) => {
+    let sessionId = req.cookies["phan_sessionId"]
+    
+    if(!sessionId) {
+        res.send({ success: false, message: `Not logged in` });
+        res.end();
+        return;
+    }
+    
+    let userData = dbManager.getUser_Session(sessionId);
+
+    if(!userData) {
+        res.clearCookie("phan_sessionId");
+        res.send({ success: false, message: `User data missing` });
+        res.end();
+        return;
+    }
+
+    let allPosts = await dbManager.getAllPosts();
+    res.send(allPosts);
+    res.end();
+    return;
 });
 
 Router.get("/check", (req, res) => {
