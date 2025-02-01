@@ -60,8 +60,8 @@ Router.post("/login", async (req, res) => {
     }
 });
 
-let malePfps = fs.readdirSync(path.join(__dirname,`../public/img/pfps/male`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/male${name}`; });
-let femalePfps = fs.readdirSync(path.join(__dirname,`../public/img/pfps/female`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/female${name}`; });
+let malePfps = fs.readdirSync(path.join(__dirname,`../public/img/pfps/male`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/male/${name}`; });
+let femalePfps = fs.readdirSync(path.join(__dirname,`../public/img/pfps/female`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/female/${name}`; });
 
 Router.post("/register", async (req, res) => {
     let sessionId = req.cookies["phan_sessionId"]

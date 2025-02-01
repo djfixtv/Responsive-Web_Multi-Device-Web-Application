@@ -98,8 +98,8 @@ exports.Router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, fu
         res.end();
     }
 }));
-let malePfps = fs_1.default.readdirSync(path_1.default.join(__dirname, `../public/img/pfps/male`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/male${name}`; });
-let femalePfps = fs_1.default.readdirSync(path_1.default.join(__dirname, `../public/img/pfps/female`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/female${name}`; });
+let malePfps = fs_1.default.readdirSync(path_1.default.join(__dirname, `../public/img/pfps/male`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/male/${name}`; });
+let femalePfps = fs_1.default.readdirSync(path_1.default.join(__dirname, `../public/img/pfps/female`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/female/${name}`; });
 exports.Router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let sessionId = req.cookies["phan_sessionId"];
     if (sessionId && dbManager.getUser_Session(sessionId)) {
