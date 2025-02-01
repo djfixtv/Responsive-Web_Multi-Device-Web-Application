@@ -4,7 +4,7 @@ const postMap = new Map();
 postCount = 0;
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const existingPosts = await (await fetch(window.location.protocol+"//"+window.location.host+"/api/retrieveAllPosts")).json()
+    const existingPosts = await (await fetch("/api/retrieveAllPosts")).json()
     console.log(existingPosts);
     existingPosts.posts.forEach(postData => {
             createPost(postData.Content, postData.OwnerName, postData.OwnerPFP, postData.PostID, postData.PostTitle)

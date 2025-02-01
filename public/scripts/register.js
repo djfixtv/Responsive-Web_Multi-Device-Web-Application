@@ -22,10 +22,10 @@ registerButton.onclick = async (e) => {
     
     let gender = "Female";
     if(maleRadio.checked) gender = "Male";
-    let response = (await (await fetch(`${window.location.protocol}//${window.location.host}/api/register?username=${encodeURIComponent(usernameField.value)}&password=${encodeURIComponent(passwordField.value)}&gender=${gender}`, { method: "POST" })).json())
+    let response = (await (await fetch(`/api/register?username=${encodeURIComponent(usernameField.value)}&password=${encodeURIComponent(passwordField.value)}&gender=${gender}`, { method: "POST" })).json())
     
     console.log(response);
-    if(response.success == true) window.location.href = `${window.location.protocol}//${window.location.host}/home`
+    if(response.success == true) window.location.href = `/home`
     else showError(response.message);
 
     maleRadio.disabled = false;

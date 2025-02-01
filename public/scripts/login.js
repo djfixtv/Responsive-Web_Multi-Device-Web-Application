@@ -15,10 +15,10 @@ loginButton.onclick = async (e) => {
     passwordField.disabled = true;
     loginButton.disabled = true;
     
-    let response = (await (await fetch(`${window.location.protocol}//${window.location.host}/api/login?username=${encodeURIComponent(usernameField.value)}&password=${encodeURIComponent(passwordField.value)}`, { method: "POST" })).json())
+    let response = (await (await fetch(`/api/login?username=${encodeURIComponent(usernameField.value)}&password=${encodeURIComponent(passwordField.value)}`, { method: "POST" })).json())
     
     console.log(response);
-    if(response.success == true) window.location.href = `${window.location.protocol}//${window.location.host}/home`
+    if(response.success == true) window.location.href = `/home`
     else showError(response.message);    
 
     usernameField.disabled = false;

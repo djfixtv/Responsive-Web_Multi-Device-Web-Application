@@ -23,7 +23,7 @@ function sendPersonaMessage(data) {
 let userData = {}
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        let response = await (await fetch(`${window.location.protocol}//${window.location.host}/api/check`)).json()
+        let response = await (await fetch(`/api/check`)).json()
         const userLoginData = response.userData;
 
         if(userLoginData) {
