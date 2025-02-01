@@ -4,7 +4,7 @@ import * as dbManager from "./dbManager"
 import path from "path";
 import fs from "fs";
 import { ios } from "./index";
-import { sortAndDeduplicateDiagnostics } from "typescript";
+import * as crypto from "node:crypto";
 export const Router = express.Router();
 
 export type Session = {
