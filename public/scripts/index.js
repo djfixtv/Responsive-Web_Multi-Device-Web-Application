@@ -54,7 +54,7 @@ logoutButton.onclick = (e) => {
     showLogoutPopup();
 }
 yesbutton.onclick = async (e) => {
-    const LogoutResponse = await (await fetch(`http://localhost:81/api/logout`, { method: "POST" })).json()
+    const LogoutResponse = await (await fetch(`/api/logout`, { method: "POST" })).json()
     console.log(LogoutResponse)
     location.reload()
 }
