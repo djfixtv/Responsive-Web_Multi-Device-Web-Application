@@ -54,13 +54,14 @@ function createComment(content, username, profilepic, commentId) {
     commentMap.set(commentId, newComment)
 
     // postContainer.appendChild(newPost);
-    commentContainer.prepend(newComment);
+    commentContainer.appendChild(newComment);
     
 }
 
 commentButton.onclick = async (e) => {
     let sendResult = await (await fetch(`/api/makeComment?postID=${currentPostId}&content=${commentField.value}`, { method: "POST" })).json();
     if(sendResult.success) { commentField.value = ""; }
+    else window.location.href = "/login"
 }
 
 socket.on("commentMade", (commentData) => { if(commentData.PostID == currentPostId) createComment(commentData.Content, commentData.UserName, commentData.UserPFP, commentData.CommentID); else console.warn("Comment is for another post. Ignoring", commentData); });

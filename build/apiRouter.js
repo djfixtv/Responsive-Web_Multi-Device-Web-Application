@@ -118,7 +118,7 @@ exports.Router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0,
     let gender = query.gender == "Male";
     try {
         yield dbManager.getUser_Name(username);
-        res.send({ success: false, message: "account with this name already exists" });
+        res.send({ success: false, message: "Account with this name already exists" });
         res.end();
         return;
     }

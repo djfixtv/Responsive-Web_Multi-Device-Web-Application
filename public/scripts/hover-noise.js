@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const originalAudio = document.getElementById("HoverSound");
-    const buttons = [...document.querySelectorAll("a.nav-btn"), document.querySelector("#login"), document.querySelector("#okbutton"), document.querySelector("#register"), ...document.querySelectorAll("button"), document.querySelector("#logoutbutton")]
+    const buttons = [...document.querySelectorAll("a.nav-btn"), document.querySelector("#okbutton"), document.querySelector("#register"), ...document.querySelectorAll("button"), document.querySelector("#logoutbutton")]
 
     buttons.forEach(button => {
         if(button == undefined) return;

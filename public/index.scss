@@ -610,6 +610,10 @@ html, body{
             font-size: 2rem;
             font-family: "P5T";
         }
+        button{
+            font-size: 2rem;
+            font-family: "P5T";
+        }
         h1{
             margin-top: 0;
             margin-bottom: 1.5rem;
@@ -856,7 +860,7 @@ html, body{
         z-index: 10;
         width: 100%;
         max-width: 45rem;
-        height: 30rem;
+        height: 32.5rem;
         overflow: hidden;
         border: solid black 4px;
         border-radius: 2rem;
@@ -869,7 +873,7 @@ html, body{
             height: 25rem;
             z-index: 9;
             filter: blur(3px);
-            height: 30rem;
+            height: 32.5rem;
         }
         h1{
             z-index: 11;
@@ -918,4 +922,25 @@ html, body{
         transform: scale(1.1);
     }
 }
+
+.userinfo-nav {
+    position: absolute;
+    left: 2rem;
+    height: 4rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    img{
+        width: 60px;
+        height: 55px;
+        margin: 0;
+    }
+    h2{
+        font-family: "P5T";
+        color: white;
+        text-shadow: outline($sc, $sw);
+        margin-top: 2rem;
+        margin-left: 0.1rem;
+    }
+  }
 

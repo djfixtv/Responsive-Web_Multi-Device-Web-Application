@@ -92,7 +92,9 @@ export const createUser = (username: string, password: string, gender: boolean, 
         let userData = await getUser_Name(username);
         reject({ message: "User exists" });
         return;
-    } catch(e) {}
+    } catch(e) {
+        console.log(`Could not load data for user "${username}"`, e);
+    }
     
     connectionPool.query(`INSERT INTO users (UserID, Username, Password, ProfilePIC, Gender) VALUES (`+
         `${mysql.escape(newUserData.UserID)}, ${mysql.escape(newUserData.Username)}, ${mysql.escape(newUserData.Password)},`+
@@ -160,7 +162,7 @@ export const getPost = (postID: string) => { return new Promise<PhanFullPost>(as
             ownerData = await getUser_ID(postData.OwnerID);
         }
         catch(err){
-            ownerData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" }
+            ownerData = { Username: "unknown user", ProfilePIC: "img/pfps/AlibabaIM.png" }
         }
         let fullPostData: PhanFullPost = { ...postData, OwnerName: ownerData.Username, OwnerPFP: ownerData.ProfilePIC }
         resolve(fullPostData); return;
@@ -177,7 +179,7 @@ export const getAllPosts = () => { return new Promise<PhanFullPost[]>(async (res
             }
             catch(e){
                 console.log("fail")
-                cachedUserData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" }
+                cachedUserData = { Username: "unknown user", ProfilePIC: "img/pfps/AlibabaIM.png" }
             }
             let fullPost: PhanFullPost = { ...post, OwnerName: cachedUserData.Username, OwnerPFP: cachedUserData.ProfilePIC };
             resolve(fullPost);
@@ -235,7 +237,7 @@ export const retrieveComment = (commentId: string) => { return new Promise<PhanF
             senderData = await getUser_ID(commentData.UserID);
         }
         catch(err){
-            senderData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" }
+            senderData = { Username: "unknown user", ProfilePIC: "img/pfps/AlibabaIM.png" }
         }
         let fullComment: PhanFullComment = { ...commentData, UserName: senderData.Username, UserPFP: senderData.ProfilePIC }
         resolve(fullComment); return;
@@ -252,7 +254,7 @@ export const getCommentsOfPost = (postId: string) => { return new Promise<PhanFu
             }
             catch(e){
                 console.log("fail")
-                cachedUserData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" }
+                cachedUserData = { Username: "unknown user", ProfilePIC: "img/pfps/AlibabaIM.png" }
             }
             let fullPost: PhanFullComment = { ...comment, UserName: cachedUserData.Username, UserPFP: cachedUserData.ProfilePIC };
             resolve(fullPost);

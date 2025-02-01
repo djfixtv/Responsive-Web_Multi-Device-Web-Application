@@ -83,7 +83,9 @@ const createUser = (username, password, gender, profilePic) => {
             reject({ message: "User exists" });
             return;
         }
-        catch (e) { }
+        catch (e) {
+            console.log(`Could not load data for user "${username}"`, e);
+        }
         connectionPool.query(`INSERT INTO users (UserID, Username, Password, ProfilePIC, Gender) VALUES (` +
             `${mysql.escape(newUserData.UserID)}, ${mysql.escape(newUserData.Username)}, ${mysql.escape(newUserData.Password)},` +
             ` ${mysql.escape(newUserData.ProfilePIC)}, ${mysql.escape(newUserData.Gender)})`, (err, result, fields) => {
@@ -188,7 +190,7 @@ const getPost = (postID) => {
                 ownerData = yield (0, exports.getUser_ID)(postData.OwnerID);
             }
             catch (err) {
-                ownerData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" };
+                ownerData = { Username: "unknown user", ProfilePIC: "img/pfps/AlibabaIM.png" };
             }
             let fullPostData = Object.assign(Object.assign({}, postData), { OwnerName: ownerData.Username, OwnerPFP: ownerData.ProfilePIC });
             resolve(fullPostData);
@@ -214,7 +216,7 @@ const getAllPosts = () => {
                     }
                     catch (e) {
                         console.log("fail");
-                        cachedUserData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" };
+                        cachedUserData = { Username: "unknown user", ProfilePIC: "img/pfps/AlibabaIM.png" };
                     }
                     let fullPost = Object.assign(Object.assign({}, post), { OwnerName: cachedUserData.Username, OwnerPFP: cachedUserData.ProfilePIC });
                     resolve(fullPost);
@@ -296,7 +298,7 @@ const retrieveComment = (commentId) => {
                 senderData = yield (0, exports.getUser_ID)(commentData.UserID);
             }
             catch (err) {
-                senderData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" };
+                senderData = { Username: "unknown user", ProfilePIC: "img/pfps/AlibabaIM.png" };
             }
             let fullComment = Object.assign(Object.assign({}, commentData), { UserName: senderData.Username, UserPFP: senderData.ProfilePIC });
             resolve(fullComment);
@@ -322,7 +324,7 @@ const getCommentsOfPost = (postId) => {
                     }
                     catch (e) {
                         console.log("fail");
-                        cachedUserData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" };
+                        cachedUserData = { Username: "unknown user", ProfilePIC: "img/pfps/AlibabaIM.png" };
                     }
                     let fullPost = Object.assign(Object.assign({}, comment), { UserName: cachedUserData.Username, UserPFP: cachedUserData.ProfilePIC });
                     resolve(fullPost);

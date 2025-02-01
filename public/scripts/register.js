@@ -34,3 +34,12 @@ registerButton.onclick = async (e) => {
     passwordField.disabled = false;
     registerButton.disabled = false;
 }
+
+[usernameField, passwordField].forEach(field => {
+    field.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            registerButton.click();
+        }
+    })
+})

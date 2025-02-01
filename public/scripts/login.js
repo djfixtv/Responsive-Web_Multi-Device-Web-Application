@@ -25,3 +25,13 @@ loginButton.onclick = async (e) => {
     passwordField.disabled = false;
     loginButton.disabled = false;
 }
+
+[usernameField, passwordField].forEach(field => {
+    field.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            loginButton.click();
+        }
+    })
+})
+

@@ -84,7 +84,7 @@ Router.post("/register", async (req, res) => {
 
     try {
         await dbManager.getUser_Name(username)
-        res.send({ success: false, message: "account with this name already exists" });
+        res.send({ success: false, message: "Account with this name already exists" });
         res.end();
         return;
     } catch(e) {}

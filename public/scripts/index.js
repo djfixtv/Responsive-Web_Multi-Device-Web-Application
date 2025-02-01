@@ -1,12 +1,13 @@
 const socket = io();
-const logoutButton = document.getElementById("logoutbutton")
-const logoutPopup = document.getElementById("logoutpopup")
-const yesbutton = document.getElementById("logoutyes")
-const nobutton = document.getElementById("logoutno")
+const logoutButton = document.getElementById("logoutbutton");
+const logoutPopup = document.getElementById("logoutpopup");
+const yesbutton = document.getElementById("logoutyes");
+const nobutton = document.getElementById("logoutno");
+const userInfo = document.getElementById("userinfo");
 
 
-const showLogoutPopup = () => {logoutPopup.style.display = "flex";}
-const hideLogoutPopup = () => {logoutPopup.style.display = "none";}
+const showLogoutPopup = () => {logoutPopup.style.display = "flex";};
+const hideLogoutPopup = () => {logoutPopup.style.display = "none";};
 
 socket.on("connect", () => { console.log(`Server connected`); });
 socket.on("disconnect", () => { console.warn(`Server disconnected`); });
@@ -21,11 +22,33 @@ function sendPersonaMessage(data) {
 
 let userData = {}
 document.addEventListener("DOMContentLoaded", async () => {
-    let response = await (await fetch(`${window.location.protocol}//${window.location.host}/api/check`)).json()
-    if(response.userData) {
-        logoutButton.style.display = "flex";
-        userData = response.userData;
-    } else logoutButton.style.display = "none";
+    try {
+        let response = await (await fetch(`${window.location.protocol}//${window.location.host}/api/check`)).json()
+        const userLoginData = response.userData;
+
+        if(userLoginData) {
+            logoutButton.style.display = "flex";
+            userInfo.style.display = "flex";
+
+            profile_img = userInfo.children[0];
+            username_txt = userInfo.children[1];
+
+            profile_img.src = userLoginData.profile;
+            username_txt.textContent = userLoginData.name;
+            console.log(userLoginData);
+            } 
+
+            else {
+                logoutButton.style.display = "none";
+                userInfo.style.display = "none";
+            }
+
+        }
+    catch (error) {
+        console.log("Error fetching user data")
+    }
+
+    
 });
 logoutButton.onclick = (e) => {
     showLogoutPopup();
@@ -38,3 +61,7 @@ yesbutton.onclick = async (e) => {
 nobutton.onclick = (e) => {
     hideLogoutPopup();
 }
+
+// function showUserInfo() {
+    
+// }

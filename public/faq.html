@@ -10,6 +10,10 @@
     <audio id="HoverSound" src="audio/HoverSound.mp3"></audio>
     <div id="header">
         <div id="nav-wrapper">
+            <div class="userinfo-nav" id="userinfo" style="display: none; flex-direction: row;">
+                <img src="img/pfps/male/JokerIM.png">
+                <h2>Username</h2>
+            </div>
             <a class="nav-btn" href="/home">HoMe</a>            
             <a class="nav-btn" href="/forum">PoST</a>
             <a class="nav-btn" href="/faq">FAQ</a>
@@ -28,7 +32,7 @@
             
         </div>
     </div>
-    <div class="logout" id="logoutpopup" style="display: flex; flex-direction: column-reverse;">
+    <div class="logout" id="logoutpopup" style="display: none; flex-direction: column-reverse;">
         <div id="pop-inner">
             <h1>Are you sure you want to <br>log out?</h1>
             <div class="logout-confirm">
@@ -36,8 +40,7 @@
                 <button id="logoutno">No</button>
             </div>
             <img src="img/StarBG.png">
-        </div>
-        
+        </div>s
     </div>
     <script src="scripts/socket.io.js"></script>
     <script src="scripts/index.js"></script>
