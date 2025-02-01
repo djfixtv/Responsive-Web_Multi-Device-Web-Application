@@ -488,7 +488,7 @@ html, body{
         margin: 10px;
         width: 100%;
         align-items: center;
-        input{
+        button{
             font-family: "P5T";
             font-size: 1.25rem;
             color: white;
@@ -498,10 +498,10 @@ html, body{
             width: 10rem;
             height: 2.5rem;
         }
-        input:hover{
+        button:hover{
             background-color: #ac0000;
         }
-        input:active{
+        button:active{
             background-color: #860000;
             color: #c9c9c9;
         }
@@ -515,47 +515,56 @@ html, body{
     
 }
 
-.Comment-Template{
+#comment-container{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    width: 90%;
-    backdrop-filter: blur(3px);
-    background-color: rgba(0, 0, 0, 0.438);
-    border-left:solid black;
-    border-right:solid black;
-    border-bottom:solid black;
-    text-shadow: outline($sc, $sw);
-    .comment{
-        // display: flex;
-        // flex-direction: column;
-        width: 70vw;
-        text-align: left;
-        p{
-            color: #c4c4c4;
-            text-shadow: outline($sc, 1px);
-        }
-        .userinfo{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            h2{
-                font-size: 1.5rem;
-                margin-top: 0.5rem;
-                margin-left: 0.5rem;
-                margin-bottom: 0;
+    justify-content: center;
+    align-items: center;
+    #comment-template{ display: none;}
+    .Comment-Template{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        backdrop-filter: blur(3px);
+        background-color: rgba(0, 0, 0, 0.438);
+        border-left:solid black;
+        border-right:solid black;
+        border-bottom:solid black;
+        text-shadow: outline($sc, $sw);
+        .comment{
+            // display: flex;
+            // flex-direction: column;
+            width: 70vw;
+            text-align: left;
+            p{
+                color: #c4c4c4;
+                text-shadow: outline($sc, 1px);
             }
-            img{
-                width: 55px;
-                height: 50px;
-                margin: 0;
+            .userinfo{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                h2{
+                    font-size: 1.5rem;
+                    margin-top: 0.5rem;
+                    margin-left: 0.5rem;
+                    margin-bottom: 0;
+                }
+                img{
+                    width: 55px;
+                    height: 50px;
+                    margin: 0;
+                }
             }
-        }
-        p{
-            font-size: 1.25rem;
-            margin: 0.3rem;
+            p{
+                font-size: 1.25rem;
+                margin: 0.3rem;
+            }
         }
     }
 }
+
 
 .login-outer{
     display: flex;

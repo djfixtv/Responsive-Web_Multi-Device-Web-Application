@@ -450,7 +450,7 @@ html, body {
   width: 100%;
   align-items: center;
 }
-#comment-input .input-inner input {
+#comment-input .input-inner button {
   font-family: "P5T";
   font-size: 1.25rem;
   color: white;
@@ -460,10 +460,10 @@ html, body {
   width: 10rem;
   height: 2.5rem;
 }
-#comment-input .input-inner input:hover {
+#comment-input .input-inner button:hover {
   background-color: #ac0000;
 }
-#comment-input .input-inner input:active {
+#comment-input .input-inner button:active {
   background-color: #860000;
   color: #c9c9c9;
 }
@@ -473,7 +473,17 @@ html, body {
   font-size: 1.25rem;
 }
 
-.Comment-Template {
+#comment-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#comment-container #comment-template {
+  display: none;
+}
+#comment-container .Comment-Template {
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -485,31 +495,31 @@ html, body {
   border-bottom: solid black;
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
 }
-.Comment-Template .comment {
+#comment-container .Comment-Template .comment {
   width: 70vw;
   text-align: left;
 }
-.Comment-Template .comment p {
+#comment-container .Comment-Template .comment p {
   color: #c4c4c4;
   text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, 0px -1px 0 black, 0px 1px 0 black;
 }
-.Comment-Template .comment .userinfo {
+#comment-container .Comment-Template .comment .userinfo {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.Comment-Template .comment .userinfo h2 {
+#comment-container .Comment-Template .comment .userinfo h2 {
   font-size: 1.5rem;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
   margin-bottom: 0;
 }
-.Comment-Template .comment .userinfo img {
+#comment-container .Comment-Template .comment .userinfo img {
   width: 55px;
   height: 50px;
   margin: 0;
 }
-.Comment-Template .comment p {
+#comment-container .Comment-Template .comment p {
   font-size: 1.25rem;
   margin: 0.3rem;
 }

@@ -53,6 +53,24 @@ export type PhanSession = {
     userId: string
 }
 
+export type PhanComment = {
+    ID: number,
+    Content: string,
+    UserID: string,
+    PostID: string,
+    CommentID: string
+}
+
+export type PhanFullComment = {
+    ID: number,
+    Content: string,
+    UserID: string,
+    UserPFP: string,
+    UserName: string,
+    PostID: string,
+    CommentID: string
+}
+
 const userCache = new Map<string, PhanUser>();  // User ID => Phansite User (Update every time we bother the database)
 const sessionMap = new Map<string, PhanUser>(); // Session ID => Phansite User
 
@@ -137,7 +155,13 @@ export const getPost = (postID: string) => { return new Promise<PhanFullPost>(as
         if(err) { console.log(`SQL Error!`, err); reject({ message: "SQL Error", err }); return; }
         if(rows.length != 1) { reject({ message: "Post missing" }); return; }
         let postData: PhanPost = rows[0];
-        let ownerData = await getUser_ID(postData.OwnerID);
+        let ownerData: any;
+        try{
+            ownerData = await getUser_ID(postData.OwnerID);
+        }
+        catch(err){
+            ownerData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" }
+        }
         let fullPostData: PhanFullPost = { ...postData, OwnerName: ownerData.Username, OwnerPFP: ownerData.ProfilePIC }
         resolve(fullPostData); return;
     });
@@ -186,3 +210,55 @@ export const clearSession = (sessionId: string) => {
 export const getUser_Session = (sessionId: string) => {
     return sessionMap.get(sessionId);
 }
+
+export const createComment = (content: string, userId: string, postId: string, commentId: string) => { return new Promise<PhanComment>(async (resolve,reject)  => {
+    connectionPool.query(`INSERT INTO comments (Content, UserID, PostID, CommentID) VALUES (${mysql.escape(content)}, ${mysql.escape(userId)} ,${mysql.escape(postId)}, ${mysql.escape(commentId)})`, async (err: mysql.MysqlError, res: mysql.OkPacket, fields: mysql.FieldInfo[]) => {
+        if(err) { console.error(err); reject({ message: "SQL Error!", err }); return; }
+        let newComment: PhanComment = {
+            ID: res.insertId,
+            Content: content,
+            UserID: userId,
+            PostID: postId,
+            CommentID: commentId
+        }
+        resolve(newComment); return;
+    });
+
+}); }
+export const retrieveComment = (commentId: string) => { return new Promise<PhanFullComment>(async (resolve,reject)  => {
+    connectionPool.query(`SELECT * FROM comments WHERE CommentID=${mysql.escape(commentId)}`, async (err: mysql.MysqlError, res: any[], fields: mysql.FieldInfo[]) => {
+        if(err) { console.error(err); reject({ message: "SQL Error!", err }); return; }
+        if(res.length != 1) { reject({ message: "Invalid row count", err: null }); return; }
+        let commentData: PhanComment = res[0];
+        let senderData: any;
+        try{
+            senderData = await getUser_ID(commentData.UserID);
+        }
+        catch(err){
+            senderData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" }
+        }
+        let fullComment: PhanFullComment = { ...commentData, UserName: senderData.Username, UserPFP: senderData.ProfilePIC }
+        resolve(fullComment); return;
+    });
+
+}); }
+export const getCommentsOfPost = (postId: string) => { return new Promise<PhanFullComment[]>(async (resolve,reject) => {
+    connectionPool.query(`SELECT * FROM comments WHERE PostID=${mysql.escape(postId)}`, async (err: mysql.MysqlError, rows: any[], fields: mysql.FieldInfo[]) => {
+        if(err) { console.error(err); reject({ message: "SQL Error!", err }); return; }
+        let fullComments = await Promise.all(rows.map(comment => { return new Promise<PhanFullComment>(async (resolve) => {
+            let cachedUserData: any = userCache.get(comment.OwnerID);
+            try{
+                if(cachedUserData == undefined) cachedUserData = await getUser_ID(comment.UserID);
+            }
+            catch(e){
+                console.log("fail")
+                cachedUserData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" }
+            }
+            let fullPost: PhanFullComment = { ...comment, UserName: cachedUserData.Username, UserPFP: cachedUserData.ProfilePIC };
+            resolve(fullPost);
+            
+        }); }));
+        resolve(fullComments); return;
+    });
+
+}); }

@@ -42,7 +42,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUser_Session = exports.clearSession = exports.createSession = exports.getAllPosts = exports.getPost = exports.createPost = exports.getUser_ID = exports.getUser_Name = exports.createUser = exports.initialize = void 0;
+exports.getCommentsOfPost = exports.retrieveComment = exports.createComment = exports.getUser_Session = exports.clearSession = exports.createSession = exports.getAllPosts = exports.getPost = exports.createPost = exports.getUser_ID = exports.getUser_Name = exports.createUser = exports.initialize = void 0;
 const bcrypt = __importStar(require("bcrypt"));
 const crypto = __importStar(require("node:crypto"));
 const mysql = __importStar(require("mysql"));
@@ -183,7 +183,13 @@ const getPost = (postID) => {
                 return;
             }
             let postData = rows[0];
-            let ownerData = yield (0, exports.getUser_ID)(postData.OwnerID);
+            let ownerData;
+            try {
+                ownerData = yield (0, exports.getUser_ID)(postData.OwnerID);
+            }
+            catch (err) {
+                ownerData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" };
+            }
             let fullPostData = Object.assign(Object.assign({}, postData), { OwnerName: ownerData.Username, OwnerPFP: ownerData.ProfilePIC });
             resolve(fullPostData);
             return;
@@ -251,3 +257,80 @@ const getUser_Session = (sessionId) => {
     return sessionMap.get(sessionId);
 };
 exports.getUser_Session = getUser_Session;
+const createComment = (content, userId, postId, commentId) => {
+    return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
+        connectionPool.query(`INSERT INTO comments (Content, UserID, PostID, CommentID) VALUES (${mysql.escape(content)}, ${mysql.escape(userId)} ,${mysql.escape(postId)}, ${mysql.escape(commentId)})`, (err, res, fields) => __awaiter(void 0, void 0, void 0, function* () {
+            if (err) {
+                console.error(err);
+                reject({ message: "SQL Error!", err });
+                return;
+            }
+            let newComment = {
+                ID: res.insertId,
+                Content: content,
+                UserID: userId,
+                PostID: postId,
+                CommentID: commentId
+            };
+            resolve(newComment);
+            return;
+        }));
+    }));
+};
+exports.createComment = createComment;
+const retrieveComment = (commentId) => {
+    return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
+        connectionPool.query(`SELECT * FROM comments WHERE CommentID=${mysql.escape(commentId)}`, (err, res, fields) => __awaiter(void 0, void 0, void 0, function* () {
+            if (err) {
+                console.error(err);
+                reject({ message: "SQL Error!", err });
+                return;
+            }
+            if (res.length != 1) {
+                reject({ message: "Invalid row count", err: null });
+                return;
+            }
+            let commentData = res[0];
+            let senderData;
+            try {
+                senderData = yield (0, exports.getUser_ID)(commentData.UserID);
+            }
+            catch (err) {
+                senderData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" };
+            }
+            let fullComment = Object.assign(Object.assign({}, commentData), { UserName: senderData.Username, UserPFP: senderData.ProfilePIC });
+            resolve(fullComment);
+            return;
+        }));
+    }));
+};
+exports.retrieveComment = retrieveComment;
+const getCommentsOfPost = (postId) => {
+    return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
+        connectionPool.query(`SELECT * FROM comments WHERE PostID=${mysql.escape(postId)}`, (err, rows, fields) => __awaiter(void 0, void 0, void 0, function* () {
+            if (err) {
+                console.error(err);
+                reject({ message: "SQL Error!", err });
+                return;
+            }
+            let fullComments = yield Promise.all(rows.map(comment => {
+                return new Promise((resolve) => __awaiter(void 0, void 0, void 0, function* () {
+                    let cachedUserData = userCache.get(comment.OwnerID);
+                    try {
+                        if (cachedUserData == undefined)
+                            cachedUserData = yield (0, exports.getUser_ID)(comment.UserID);
+                    }
+                    catch (e) {
+                        console.log("fail");
+                        cachedUserData = { Username: "unknown user", ProfilePIC: "img/StarBG.png" };
+                    }
+                    let fullPost = Object.assign(Object.assign({}, comment), { UserName: cachedUserData.Username, UserPFP: cachedUserData.ProfilePIC });
+                    resolve(fullPost);
+                }));
+            }));
+            resolve(fullComments);
+            return;
+        }));
+    }));
+};
+exports.getCommentsOfPost = getCommentsOfPost;

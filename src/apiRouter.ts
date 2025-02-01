@@ -4,6 +4,7 @@ import * as dbManager from "./dbManager"
 import path from "path";
 import fs from "fs";
 import { ios } from "./index";
+import { sortAndDeduplicateDiagnostics } from "typescript";
 export const Router = express.Router();
 
 export type Session = {
@@ -174,23 +175,6 @@ Router.post("/makePost", async (req, res) => {
 });
 
 Router.get("/retrievePost", async (req, res) => {
-    let sessionId = req.cookies["phan_sessionId"]
-    
-    if(!sessionId) {
-        res.send({ success: false, message: `Not logged in` });
-        res.end();
-        return;
-    }
-    
-    let userData = dbManager.getUser_Session(sessionId);
-
-    if(!userData) {
-        res.clearCookie("phan_sessionId");
-        res.send({ success: false, message: `User data missing` });
-        res.end();
-        return;
-    }
-
     let targetPost = req.query["postID"];
     if(typeof(targetPost) != "string") {
         res.send({ success: false, message: "Invalid \"postID\" query" });
@@ -198,10 +182,17 @@ Router.get("/retrievePost", async (req, res) => {
         return;
     }
 
-    let postData = await dbManager.getPost(targetPost);
-    res.send({ success: true, postData });
-    res.end();
-    return;
+    try {
+        let postData = await dbManager.getPost(targetPost);
+        res.send({ success: true, postData });
+        res.end();
+        return;
+    }
+    catch(error){
+        res.send({ success: false, message: "failed to get post"});
+        res.end();
+        return;
+    }
 });
 
 Router.get("/retrieveAllPosts", async (req, res) => {
@@ -240,3 +231,61 @@ Router.get("/check", (req, res) => {
     res.send({ success: true, userData: userCopy });
     res.end();
 });
+
+Router.get("/retrieveComments", async (req, res) => {
+    let targetPost = req.query["postID"];
+    if(typeof(targetPost) != "string") {
+        res.send({ success: false, message: "Invalid \"postID\" query" });
+        res.end();
+        return;
+    }
+    try{
+        let comments = await dbManager.getCommentsOfPost(targetPost);
+        res.send({success: true, comments});
+        res.end(); 
+        return;
+    }
+    catch(e){
+        res.send({success: false, message: "Could not retrieve comments."})
+        res.end();
+        return;
+    }
+})
+
+Router.post("/makeComment", async (req, res) => {
+    let sessionId = req.cookies["phan_sessionId"]
+
+    if(!sessionId) {
+        res.send({ success: false, message: `Not logged in`})
+        res.end();
+        return;
+    }
+
+    let userData = dbManager.getUser_Session(sessionId);
+    if(userData == undefined) {
+        res.clearCookie("phan_sessionId");
+        res.send({success: false, message: `Could not locate your user data.`});
+        res.end();
+        return;
+    }
+    let commentID: string = `phan_c_${crypto.randomUUID()}`;
+    let content: any | undefined = req.query["content"];
+    let postID: any | undefined = req.query["postID"];
+    if(content == undefined || postID == undefined) {
+        res.send({ success: false, message: "\"postID\" or \"content\" queries missing from request" });
+        res.end();
+        return;
+    }
+    try{
+        await dbManager.createComment(content, userData.UserID, postID, commentID);
+        let commentData = await dbManager.retrieveComment(commentID);
+        ios.emit("commentMade", commentData);
+        res.send({ success: true, commentData: commentData });
+        res.end();
+        return;
+    }
+    catch(err){
+        res.send({success: false, message: "couldn't create comment in database"});
+        res.end(); return;
+    }
+})
