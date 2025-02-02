@@ -26,7 +26,9 @@ function createPost(content, username, profilepic, postid, title) {
     profile_img.src = profilepic;
     username_txt.textContent = username;
     content_txt.textContent = content;
+    content_txt.innerHTML = content_txt.innerHTML.replace(/\n/g, "<br>")
     title_txt.textContent = title;
+    title_txt.innerHTML = title_txt.innerHTML.replace(/\n/g, "<br>")
     newPost.href = `post?id=${postid}`;
 
     postCount++;

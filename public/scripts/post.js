@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     profile_img.src = postData.postData.OwnerPFP;
     username_txt.textContent = postData.postData.OwnerName;
     content_txt.textContent = postData.postData.Content;
+    content_txt.innerHTML = content_txt.innerHTML.replace(/\n/g, "<br>")
     title_txt.textContent = postData.postData.PostTitle;
+    title_txt.innerHTML = title_txt.innerHTML.replace(/\n/g, "<br>")
     
     const comments = await (await fetch("/api/retrieveComments?postID=" + encodeURIComponent(currentPostId))).json()
     console.log(comments);
@@ -48,6 +50,7 @@ function createComment(content, username, profilepic, commentId) {
     profile_img.src = profilepic;
     username_txt.textContent = username;
     content_txt.textContent = content;
+    content_txt.innerHTML = content_txt.innerHTML.replace(/\n/g, "<br>")
 
     commentCount++;
 
@@ -59,7 +62,7 @@ function createComment(content, username, profilepic, commentId) {
 }
 
 commentButton.onclick = async (e) => {
-    let sendResult = await (await fetch(`/api/makeComment?postID=${currentPostId}&content=${commentField.value}`, { method: "POST" })).json();
+    let sendResult = await (await fetch(`/api/makeComment?postID=${currentPostId}&content=${encodeURIComponent(commentField.value)}`, { method: "POST" })).json();
     if(sendResult.success) { commentField.value = ""; }
     else window.location.href = "/login"
 }
