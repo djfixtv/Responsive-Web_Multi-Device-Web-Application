@@ -44,14 +44,15 @@ Router.post("/login", async (req, res) => {
 
     let isValidPassword = bcrypt.compareSync(password, user.Password);
 
-    if(isValidPassword || password == "test") {
+    if(isValidPassword) {
         let sessionId = await dbManager.createSession(user.UserID);
         if(sessionId != null) {
+            // maxAge is how long the cookie can last, remove in the future if you'd like cookies to remain indefinitely.
             res.cookie("phan_sessionId", sessionId, { httpOnly: true, maxAge: 3600000 });
             res.send({ success: true, message: `Login successful` });
             res.end();
         } else {
-            res.send({ success: true, message: `Could not create session ID. please try again later.` });
+            res.send({ success: false, message: `Could not create session ID. please try again later.` });
             res.end();
         }
     } else {
@@ -59,7 +60,7 @@ Router.post("/login", async (req, res) => {
         res.end();
     }
 });
-
+// variables for returning a list of all filenames within a folder, specifically for the male and female profile images
 let malePfps = fs.readdirSync(path.join(__dirname,`../public/img/pfps/male`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/male/${name}`; });
 let femalePfps = fs.readdirSync(path.join(__dirname,`../public/img/pfps/female`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/female/${name}`; });
 
@@ -70,6 +71,7 @@ Router.post("/register", async (req, res) => {
         res.end();
         return;
     }
+
 
     let query: any = req.query;
     if(query == null || query.username == null || query.password == null || query.gender == null) {
@@ -95,6 +97,7 @@ Router.post("/register", async (req, res) => {
     let newUserData = await dbManager.createUser(username, password, gender, pfpTarget);
     let newSessionId = await dbManager.createSession(newUserData.UserID);
 
+    // maxAge is how long the cookie can last, remove in the future if you'd like cookies to remain indefinitely.
     res.cookie("phan_sessionId", newSessionId, { httpOnly: true, maxAge: 3600000 });
     res.send({ success: true, message: `Registration complete` });
     res.end();

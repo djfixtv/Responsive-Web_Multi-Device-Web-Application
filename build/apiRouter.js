@@ -52,6 +52,7 @@ const dbManager = __importStar(require("./dbManager"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const index_1 = require("./index");
+const crypto = __importStar(require("node:crypto"));
 exports.Router = express_1.default.Router();
 exports.Router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let sessionId = req.cookies["phan_sessionId"];
@@ -81,15 +82,16 @@ exports.Router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, fu
         return;
     }
     let isValidPassword = bcrypt.compareSync(password, user.Password);
-    if (isValidPassword || password == "test") {
+    if (isValidPassword) {
         let sessionId = yield dbManager.createSession(user.UserID);
         if (sessionId != null) {
+            // maxAge is how long the cookie can last, remove in the future if you'd like cookies to remain indefinitely.
             res.cookie("phan_sessionId", sessionId, { httpOnly: true, maxAge: 3600000 });
             res.send({ success: true, message: `Login successful` });
             res.end();
         }
         else {
-            res.send({ success: true, message: `Could not create session ID. please try again later.` });
+            res.send({ success: false, message: `Could not create session ID. please try again later.` });
             res.end();
         }
     }
@@ -98,6 +100,7 @@ exports.Router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, fu
         res.end();
     }
 }));
+// variables for returning a list of all filenames within a folder, specifically for the male and female profile images
 let malePfps = fs_1.default.readdirSync(path_1.default.join(__dirname, `../public/img/pfps/male`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/male/${name}`; });
 let femalePfps = fs_1.default.readdirSync(path_1.default.join(__dirname, `../public/img/pfps/female`)).filter(name => { return name.endsWith(".png"); }).map(name => { return `img/pfps/female/${name}`; });
 exports.Router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -127,6 +130,7 @@ exports.Router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0,
     let pfpTarget = pfpSelection[Math.floor(Math.random() * pfpSelection.length)];
     let newUserData = yield dbManager.createUser(username, password, gender, pfpTarget);
     let newSessionId = yield dbManager.createSession(newUserData.UserID);
+    // maxAge is how long the cookie can last, remove in the future if you'd like cookies to remain indefinitely.
     res.cookie("phan_sessionId", newSessionId, { httpOnly: true, maxAge: 3600000 });
     res.send({ success: true, message: `Registration complete` });
     res.end();

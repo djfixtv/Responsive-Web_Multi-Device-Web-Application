@@ -37,9 +37,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ios = void 0;
+// library that handles web requests easier.
 const express_1 = __importDefault(require("express"));
+// built in NodeJS library for web server
 const http_1 = __importDefault(require("http"));
+// built in NodeJS library for file paths
 const path_1 = __importDefault(require("path"));
+// Library that handles web-sockets, allows live-commmunication to and from web server for real-time comments and posts
 const sio = __importStar(require("socket.io"));
 const dotenv = __importStar(require("dotenv"));
 const dbManager = __importStar(require("./dbManager"));

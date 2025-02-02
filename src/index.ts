@@ -1,6 +1,10 @@
+// library that handles web requests easier.
 import express from "express";
+// built in NodeJS library for web server
 import http from "http";
+// built in NodeJS library for file paths
 import path from "path";
+// Library that handles web-sockets, allows live-commmunication to and from web server for real-time comments and posts
 import * as sio from "socket.io";
 import * as dotenv from "dotenv";
 import * as dbManager from "./dbManager";
