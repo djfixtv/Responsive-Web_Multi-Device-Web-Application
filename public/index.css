@@ -132,7 +132,9 @@ html, body {
   border-radius: 1rem;
   margin-top: 1.5rem;
   min-width: 90%;
-  min-height: 85%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
 }
 .Welcome h1 {
   font-size: 3rem;
@@ -264,6 +266,26 @@ html, body {
 }
 #header #nav-wrapper input:hover {
   transform: scale(1.05);
+}
+#header #nav-wrapper .userinfo-nav {
+  position: absolute;
+  left: 2rem;
+  height: 4rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+#header #nav-wrapper .userinfo-nav img {
+  width: 60px;
+  height: 55px;
+  margin: 0;
+}
+#header #nav-wrapper .userinfo-nav h2 {
+  font-family: "P5T";
+  color: white;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
+  margin-top: 2rem;
+  margin-left: 0.1rem;
 }
 
 @font-face {
@@ -868,23 +890,260 @@ html, body {
   transform: scale(1.1);
 }
 
-.userinfo-nav {
-  position: absolute;
-  left: 2rem;
-  height: 4rem;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-.userinfo-nav img {
-  width: 60px;
-  height: 55px;
-  margin: 0;
-}
-.userinfo-nav h2 {
-  font-family: "P5T";
-  color: white;
-  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
-  margin-top: 2rem;
-  margin-left: 0.1rem;
+@media (max-width: 1024px) {
+  #header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url(img/bg-new-blur.png);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    border: solid #840000 0.2vw;
+  }
+  #header #nav-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #header #nav-wrapper a {
+    display: inline-block;
+    color: white;
+    text-shadow: -3.25px -3.25px 0 black, 3.25px -3.25px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, 0px -3.25px 0 black, 0px 3.25px 0 black;
+    font-family: "P5MT-Alt";
+    text-decoration: none;
+    transition: 0.05s ease;
+    font-size: 2rem;
+  }
+  #header #nav-wrapper a:hover {
+    transform: scale(1.1);
+  }
+  #header #nav-wrapper .nav-btn {
+    margin: 0 1vw;
+  }
+  #header #nav-wrapper #logoutbutton {
+    font-family: "P5MT";
+    border: none;
+    background: none;
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: -3.25px -3.25px 0 black, 3.25px -3.25px 0 black, -3.25px 3.25px 0 black, 3.25px 3.25px 0 black, -3.25px 0px 0 black, 3.25px 0px 0 black, 0px -3.25px 0 black, 0px 3.25px 0 black;
+    position: absolute;
+    right: 0.2rem;
+    transition: 0.05s ease;
+    margin: 0 1vw;
+  }
+  #header #nav-wrapper input:hover {
+    transform: scale(1.05);
+  }
+  #header #nav-wrapper .userinfo-nav {
+    position: absolute;
+    left: 0.5rem;
+    height: 4rem;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 0.5rem;
+    flex-direction: column !important;
+  }
+  #header #nav-wrapper .userinfo-nav img {
+    width: 60px;
+    height: 55px;
+    margin: 0;
+  }
+  #header #nav-wrapper .userinfo-nav h2 {
+    font-family: "P5T";
+    color: white;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
+    margin: 0;
+    font-size: 1rem;
+  }
+  .Welcome {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .register-outer {
+    height: 100%;
+    margin: 0;
+  }
+  .register-outer .register-page {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.438);
+  }
+  .register-outer .register-page img {
+    position: absolute;
+    border: solid black 1px;
+    height: 100%;
+    width: 100rem;
+    filter: blur(3px);
+    background-image: url("img/StarBG.png");
+    -o-object-fit: cover;
+       object-fit: cover;
+    background-position: center;
+  }
+  .register-outer .error {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.438);
+  }
+  .register-outer .error img {
+    position: absolute;
+    border: solid black 1px;
+    height: 100%;
+    width: 100rem;
+    filter: blur(3px);
+    background-image: url("img/StarBG.png");
+    -o-object-fit: cover;
+       object-fit: cover;
+    background-position: center;
+  }
+  .login-outer {
+    height: 100%;
+    margin: 0;
+  }
+  .login-outer img {
+    position: absolute;
+    border: solid black 1px;
+    height: 100%;
+    filter: blur(3px);
+    background-image: url("img/StarBG.png");
+    -o-object-fit: cover;
+       object-fit: cover;
+    background-position: center;
+  }
+  .login-outer .login-page {
+    height: 100%;
+    border-radius: 0;
+  }
+  .login-outer .error {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.438);
+  }
+  .login-outer .error img {
+    position: absolute;
+    border: solid black 1px;
+    height: 100%;
+    width: 100rem;
+    filter: blur(3px);
+    background-image: url("img/StarBG.png");
+    -o-object-fit: cover;
+       object-fit: cover;
+    background-position: center;
+  }
+  #posts-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #posts-container .Post-Template {
+    width: 100% !important;
+  }
+  #posts-container .Post-Template h2 {
+    line-height: 2rem;
+  }
+  .Welcome2 .postbutton-container {
+    position: absolute;
+    width: 100vw;
+    padding-top: 0.5rem;
+  }
+  .Welcome2 .postbutton-container a {
+    text-shadow: -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black, 3px 3px 0 black, -3px 0px 0 black, 3px 0px 0 black, 0px -3px 0 black, 0px 3px 0 black;
+    display: inline-block;
+    font-family: "P5MT";
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+  .Welcome2 .postbutton-container a:hover {
+    transform: scale(1.1);
+  }
+  .Post-Page-Template {
+    width: 100%;
+    text-align: left;
+    border: solid black;
+    -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.438);
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, -2px 0px 0 black, 2px 0px 0 black, 0px -2px 0 black, 0px 2px 0 black;
+  }
+  .Post-Page-Template h2 {
+    line-height: 2rem;
+  }
+  .logout {
+    height: 100%;
+  }
+  .logout #pop-inner {
+    height: 100%;
+    margin-top: 0;
+  }
+  .logout #pop-inner img {
+    position: absolute;
+    border: solid black 1px;
+    height: 100%;
+    filter: blur(3px);
+    background-image: url("img/StarBG.png");
+    -o-object-fit: cover;
+       object-fit: cover;
+    background-position: center;
+    border-radius: 0;
+  }
+  #comment-input {
+    width: 96%;
+  }
+  #comment-input textarea:focus {
+    outline: none;
+  }
+  #comment-input .input-inner {
+    width: 100%;
+  }
+  #comment-input .input-inner button {
+    font-family: "P5T";
+    font-size: 1.25rem;
+    color: white;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, 0px -1px 0 black, 0px 1px 0 black;
+    background-color: #860000;
+    border: solid black;
+    width: 10rem;
+    height: 2.5rem;
+  }
+  #comment-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #comment-container .Comment-Template {
+    width: 100%;
+  }
+  #comment-container .Comment-Template .comment {
+    width: 100%;
+    text-align: left;
+  }
+  #comment-container .Comment-Template .comment p {
+    color: #c4c4c4;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -1px 0px 0 black, 1px 0px 0 black, 0px -1px 0 black, 0px 1px 0 black;
+  }
+  #comment-container .Comment-Template .comment .userinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #comment-container .Comment-Template .comment .userinfo h2 {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    margin-bottom: 0;
+  }
+  #comment-container .Comment-Template .comment .userinfo img {
+    width: 55px;
+    height: 50px;
+    margin: 0;
+  }
 }/*# sourceMappingURL=index.css.map */

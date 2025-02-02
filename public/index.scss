@@ -16,6 +16,8 @@ html, body{
     background-attachment: fixed;
     background-size: cover;
 }
+
+
 .page{
     display: flex;
     flex-direction: column;
@@ -152,7 +154,9 @@ html, body{
     border-radius: 1rem;
     margin-top: 1.5rem;
     min-width: 90%;
-    min-height: 85%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
     h1 {
       font-size: 3rem;
       // Using the function to generate the text-shadow
@@ -294,6 +298,26 @@ html, body{
         input:hover{
             transform: scale(1.05);
         }
+        .userinfo-nav {
+            position: absolute;
+            left: 2rem;
+            height: 4rem;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            img{
+                width: 60px;
+                height: 55px;
+                margin: 0;
+            }
+            h2{
+                font-family: "P5T";
+                color: white;
+                text-shadow: outline($sc, $sw);
+                margin-top: 2rem;
+                margin-left: 0.1rem;
+            }
+          }
     }
 
 }
@@ -922,25 +946,271 @@ html, body{
         transform: scale(1.1);
     }
 }
-
-.userinfo-nav {
-    position: absolute;
-    left: 2rem;
-    height: 4rem;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    img{
-        width: 60px;
-        height: 55px;
+@media (max-width: 1024px) {
+    #header {
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: url(img/bg-new-blur.png);
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        border: solid #840000 0.2vw;
+        #nav-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            a {
+                display: inline-block;
+                color: white;
+                text-shadow: outline($sc, 3.25px);
+                font-family: "P5MT-Alt";
+                text-decoration: none;
+                transition: 0.05s ease; 
+                font-size:  2rem;
+            }
+            a:hover {
+                transform:scale(1.1); 
+            }
+            .nav-btn {
+                margin: 0 1vw;
+            }
+            #logoutbutton{
+                font-family: "P5MT";
+                border: none;
+                background: none;
+                color: white;
+                font-size:  1.5rem;
+                text-shadow: outline($sc, 3.25px);
+                position: absolute;
+                right: 0.2rem;
+                transition: 0.05s ease;
+                margin: 0 1vw;
+            }
+            input:hover{
+                transform: scale(1.05);
+            }
+            .userinfo-nav {
+                position: absolute;
+                left: 0.5rem;
+                height: 4rem;
+                justify-content: center;
+                align-items: start;
+                margin-bottom: 0.5rem;
+                flex-direction: column !important;
+                img{
+                    width: 60px;
+                    height: 55px;
+                    margin: 0;
+                    
+                }
+                h2{
+                    font-family: "P5T";
+                    color: white;
+                    text-shadow: outline($sc, $sw);
+                    margin: 0;
+                    font-size: 1rem;
+                }
+              }
+        }
+    }
+    .Welcome {
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        // min-height: 140%;
+    }
+    .register-outer{
+        height: 100%;
         margin: 0;
+        .register-page{
+            width:100%;
+            height: 100%;
+            border-radius: 0;
+            background-color: rgba(0, 0, 0, 0.438);
+            img{
+                position: absolute;
+                border: solid black 1px;
+                // border-radius: 2rem;
+                height: 100%;
+                width: 100rem;
+                filter: blur(3px);
+                background-image: url("img/StarBG.png");
+                object-fit: cover;
+                background-position: center;
+            }
+        }
+        .error{
+            width:100%;
+            height: 100%;
+            border-radius: 0;
+            background-color: rgba(0, 0, 0, 0.438);
+            img{
+                position: absolute;
+                border: solid black 1px;
+                // border-radius: 2rem;
+                height: 100%;
+                width: 100rem;
+                filter: blur(3px);
+                background-image: url("img/StarBG.png");
+                object-fit: cover;
+                background-position: center;
+            }
+        }
+    } 
+    .login-outer{
+        height: 100%;
+        margin: 0;
+        
+        img{
+            position: absolute;
+            border: solid black 1px;
+            // border-radius: 2rem;
+            height: 100%;
+            filter: blur(3px);
+            background-image: url("img/StarBG.png");
+            object-fit: cover;
+            background-position: center;
+        }
+        .login-page{
+            height: 100%;
+            border-radius: 0;
+        }
+        .error{
+            width:100%;
+            height: 100%;
+            border-radius: 0;
+            background-color: rgba(0, 0, 0, 0.438);
+            img{
+                position: absolute;
+                border: solid black 1px;
+                // border-radius: 2rem;
+                height: 100%;
+                width: 100rem;
+                filter: blur(3px);
+                background-image: url("img/StarBG.png");
+                object-fit: cover;
+                background-position: center;
+            }
+        }
     }
-    h2{
-        font-family: "P5T";
-        color: white;
+    #posts-container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .Post-Template{
+            width: 100% !important;
+            h2{
+                line-height: 2rem;
+            }
+        }
+    }
+    .Welcome2 {
+        .postbutton-container{
+            position: absolute;
+            width: 100vw;
+            padding-top: 0.5rem;
+            a{
+                text-shadow: outline($sc, 3px);
+                display:inline-block ;
+                font-family: "P5MT";
+                color: white;
+                text-decoration: none;
+                font-size: 2rem;
+                margin-right: 1rem;
+            }
+            a:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+    .Post-Page-Template{
+        width: 100%;
+        text-align: left;
+        border: solid black;
+        backdrop-filter: blur(3px);
+        background-color: rgba(0, 0, 0, 0.438);
         text-shadow: outline($sc, $sw);
-        margin-top: 2rem;
-        margin-left: 0.1rem;
-    }
-  }
+        h2{
+            line-height: 2rem;
+        }
+        
 
+    }
+    .logout{
+        height: 100%;
+        #pop-inner{
+            height: 100%;
+            margin-top: 0;
+            img{
+                position: absolute;
+                border: solid black 1px;
+                // border-radius: 2rem;
+                height: 100%;
+                filter: blur(3px);
+                background-image: url("img/StarBG.png");
+                object-fit: cover;
+                background-position: center;
+                border-radius: 0;
+            }
+            
+        }
+        
+        
+    }
+    #comment-input{
+        width: 96%;
+        textarea:focus{
+            outline:none
+        }
+        .input-inner{
+            width: 100%;
+            button{
+                font-family: "P5T";
+                font-size: 1.25rem;
+                color: white;
+                text-shadow: outline($sc, 1px);
+                background-color: #860000;
+                border: solid black;
+                width: 10rem;
+                height: 2.5rem;
+            }
+        }
+    
+    }
+    #comment-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .Comment-Template{
+            width: 100%;
+            .comment{
+                width: 100%;
+                text-align: left;
+                p{
+                    color: #c4c4c4;
+                    text-shadow: outline($sc, 1px);
+                }
+                .userinfo{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    h2{
+                        font-size: 1.5rem;
+                        margin-top: 0.5rem;
+                        margin-left: 0.5rem;
+                        margin-bottom: 0;
+                    }
+                    img{
+                        width: 55px;
+                        height: 50px;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
